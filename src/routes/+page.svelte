@@ -1,5 +1,5 @@
 <script>
-	import TextField from '../components/common/user-interface/TextField.svelte';
+	import InputBase from '../components/common/user-interface/InputBase.svelte';
 </script>
 
-<TextField/>
+<InputBase/>
