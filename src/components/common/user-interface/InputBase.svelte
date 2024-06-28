@@ -26,13 +26,13 @@
         style:height = {height}
         style:border-radius = {borderRadius}
         style:border-style = {borderStyle}
-        style:--border-color = {borderColor}
-        style:border-width = {borderWidth}
         style:transition = {transition}
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
         style:outline = {outline}
+		style:--border-color = {borderColor}
+		style:--border-width = {borderWidth}
         style:--focus-borderColor = {primaryColor}
         style:--focus-borderWidth = {focusBorderWidth}
     />
@@ -67,7 +67,7 @@
 
     input:focus {
         border-color: var(--focus-borderColor);
-        border-width: 5px;
+        border-width: var(--focus-borderWidth);
     }
 
     .input-container input {
