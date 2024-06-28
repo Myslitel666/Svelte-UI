@@ -67,7 +67,7 @@
 
     input:focus {
         border-color: var(--focus-borderColor);
-        border-width: var(--focus-borderWidth);
+        border-width: 5px;
     }
 
     .input-container input {
