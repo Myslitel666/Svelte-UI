@@ -1,4 +1,8 @@
 @font-face {
-	font-family: 'Century Gothic'; /* Замените на желаемое имя */
 	src: local('YourCustomFont'), url('/fonts/centurygothic.ttf'), format('truetype'); /* Путь к вашему файлу шрифта */
+}
+
+* {
+	font-family: 'Century Gothic', sans-serif;
+	letter-spacing: -0.02rem;
 }
