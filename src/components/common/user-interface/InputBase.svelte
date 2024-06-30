@@ -2,15 +2,16 @@
     export let height = '3rem'                             /* Высота поля */
     export let width = '15rem'                             /* Ширина поля */
     export let borderRadius = '4.5px';                     /* Радиус скругления углов */
-    export let transition = 'border-color 0.5s ease';      /* Тайм-код для применения того или иного эффекта */
+    export let transition = 'border-color 0.3s ease, outline-color 0.3s ease';      /* Тайм-код для применения того или иного эффекта */
     export let paddingLeft = '0.6rem';                     /* Отступ от левой границы до курсора */
     export let paddingRight = '0.6rem';                    /* Отступ до правой границы */
     export let fontSize = '1.25rem';                       /* Размер шрифта */
     export let primaryColor = '#12ce0e';                   /* Основной цвет*/
-    export let borderWidth = '1px';                        /* Толщина обводки */
-    export let borderStyle = 'solid';                      /* Тип обводки */
     export let borderColor = '#c4c4c4';                    /* Цвет обводки */
     export let cursor = 'text';                            /* Курсор */
+    export let borderWidth = '1px';                        /* Толщина обводки */
+    export let borderStyle = 'solid';                      /* Тип обводки */
+    export let hoverBorderColor = 'black';                 /* Цвет обводки при наведении*/
     export let focusBorderWidth = '4px';                   /* Толщина обводки при нажатии*/
 
 </script>
@@ -29,20 +30,21 @@
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
-        style:--border-color = {borderColor}
-		style:--border-width = {borderWidth}
-        style:--focus-borderColor = {primaryColor}
-        style:--focus-borderWidth = {focusBorderWidth}
+		style:border-width = {borderWidth}
+        style:outline-color = {primaryColor}
+        style:outline-width = {focusBorderWidth}
+        style:--borderColor = {borderColor}
+        style:--hoverBorderColor = {hoverBorderColor}
     />
     <label 
         for='input-base'
         style:position = 'absolute'
         style:margin-left = {paddingLeft}
         style:font-size = {fontSize}
-        style:color = '#b0b0b0'
+        style:color = '#c8c8c8'
         style:--hover-cursor = {cursor}
     >
-        Do you like cheese?
+        Course
     </label>
 </div>
 
@@ -54,14 +56,12 @@
     }
 
     input {
-        border-color: var(--border-color);
-        border-width: var(--border-width);
+        border-color: var(--borderColor);
         cursor: var(--hover-cursor);
     }
 
-    input:focus {
-        outline-color: var(--focus-borderColor);
-        outline-width: var(--focus-borderWidth);
+    input:hover {
+        border-color: var(--hoverBorderColor);
     }
 
     label:hover {
