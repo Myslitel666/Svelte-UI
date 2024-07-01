@@ -30,20 +30,20 @@
         style:font-size = {fontSize}
         style:outline-color = {primaryColor}
         style:font-width = 0.5rem
-        style:--primaryColor = {primaryColor}
-        style:--borderColor = {borderColor}
-        style:--hoverBorderColor = {hoverBorderColor}
+        style:--Xl-primaryColor = {primaryColor}
+        style:--Xl-borderColor = {borderColor}
+        style:--Xl-hoverBorderColor = {hoverBorderColor}
     />
     <label 
         for='input-base'
         style:position = 'absolute'
         style:margin-left = {paddingLeft}
         style:transition = 'all {effectsTimeCode} ease'
-        style:--liftingHeight = {height}
-        style:--primaryColor = {primaryColor}
-        style:--font-size = {fontSize}
-        style:--color = {labelColor}
-        style:--labelBgColor = {backgroundColor}
+        style:--Xl-liftingHeight = {height}
+        style:--Xl-primaryColor = {primaryColor}
+        style:--Xl-font-size = {fontSize}
+        style:--Xl-color = {labelColor}
+        style:--Xl-labelBgColor = {backgroundColor}
     >
         {label}
     </label>
@@ -51,14 +51,14 @@
 
 <style>
     input {
-        border-color: var(--borderColor);
+        border-color: var(--Xl-borderColor);
         border-width: 1px;
         border-style: solid;
     }
 
     label {
-        font-size: var(--font-size);
-        color: var(--color);
+        font-size: var(--Xl-font-size);
+        color: var(--Xl-color);
     }
 
     .input-container {
@@ -68,7 +68,7 @@
     }
 
     input:hover {
-        border-color: var(--hoverBorderColor);
+        border-color: var(--Xl-hoverBorderColor);
     }
 
     label:hover {
@@ -76,13 +76,13 @@
     }
 
     input:focus + label {
-        color: var(--primaryColor); /* Изменяем цвет на основной цвет */
+        color: var(--Xl-primaryColor); /* Изменяем цвет на основной цвет */
     }
 
     input:focus + label, input:not(:placeholder-shown) + label {
-        transform: translate(-0.26rem, calc(-1 * var(--liftingHeight)/2 - 0.16rem)); /* Сдвигаем метку влево и вверх */
+        transform: translate(-0.26rem, calc(-1 * var(--Xl-liftingHeight)/2 - 0.16rem)); /* Сдвигаем метку влево и вверх */
         font-size: 0.81rem; /* Уменьшаем размер шрифта */
-        background-color: var(--labelBgColor);
+        background-color: var(--Xl-labelBgColor);
         padding: 0 0.26rem 0 0.26rem;
     }
 </style>
