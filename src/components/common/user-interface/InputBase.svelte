@@ -83,6 +83,6 @@
         transform: translate(-0.26rem, calc(-1 * var(--liftingHeight)/2 - 0.16rem)); /* Сдвигаем метку влево и вверх */
         font-size: 0.81rem; /* Уменьшаем размер шрифта */
         background-color: var(--labelBgColor);
-        padding: 0.26rem;
+        padding: 0 0.26rem 0 0.26rem;
     }
 </style>
