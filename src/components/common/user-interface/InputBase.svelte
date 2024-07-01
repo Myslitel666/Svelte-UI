@@ -10,15 +10,8 @@
     export let labelColor = '#c8c8c8';                     /* Цвет надписи по умолчанию*/
     export let primaryColor = '#5bb056';                   /* Основной цвет*/
     export let borderColor = '#c4c4c4';                    /* Цвет обводки */
-    export let cursor = 'text';                            /* Курсор */
-    export let borderWidth = '1px';                        /* Толщина обводки */
-    export let borderStyle = 'solid';                      /* Тип обводки */
     export let hoverBorderColor = 'black';                 /* Цвет обводки при наведении */
-    export let focusBorderWidth = '2px';                   /* Толщина обводки при нажатии */
-    export let labelFontSizeActive = '0.81rem';            /* Размер шрифта надписи при нажатии */
     export let backgroundColor = 'white';                  /* Цвет фона */
-
-    let inputValue = ''; // Переменная для хранения значения ввода
 </script>
 
 <div 
@@ -31,14 +24,11 @@
         placeholder = ''
         style:height = {height}
         style:border-radius = {borderRadius}
-        style:border-style = {borderStyle}
         style:transition = 'border-color {effectsTimeCode} ease'
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
-		style:border-width = {borderWidth}
         style:outline-color = {primaryColor}
-        style:outline-width = {focusBorderWidth}
         style:font-width = 0.5rem
         style:--primaryColor = {primaryColor}
         style:--borderColor = {borderColor}
@@ -49,11 +39,10 @@
         style:position = 'absolute'
         style:margin-left = {paddingLeft}
         style:transition = 'all {effectsTimeCode} ease'
+        style:--liftingHeight = {height}
         style:--primaryColor = {primaryColor}
         style:--font-size = {fontSize}
         style:--color = {labelColor}
-        style:--hover-cursor = {cursor}
-        style:--labelFontSizeActive = {labelFontSizeActive}
         style:--labelBgColor = {backgroundColor}
     >
         {label}
@@ -63,6 +52,8 @@
 <style>
     input {
         border-color: var(--borderColor);
+        border-width: 1px;
+        border-style: solid;
     }
 
     label {
@@ -81,7 +72,7 @@
     }
 
     label:hover {
-        cursor: var(--hover-cursor);
+        cursor: text;
     }
 
     input:focus + label {
@@ -89,8 +80,8 @@
     }
 
     input:focus + label, input:not(:placeholder-shown) + label {
-        transform: translate(-0.26rem, -1.55rem); /* Сдвигаем метку влево и вверх */
-        font-size: var(--labelFontSizeActive); /* Уменьшаем размер шрифта */
+        transform: translate(-0.26rem, calc(-1 * var(--liftingHeight)/2 - 0.16rem)); /* Сдвигаем метку влево и вверх */
+        font-size: 0.81rem; /* Уменьшаем размер шрифта */
         background-color: var(--labelBgColor);
         padding: 0.26rem;
     }
