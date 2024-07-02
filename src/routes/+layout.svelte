@@ -1,5 +1,5 @@
 <script lang="ts">
-    import '../../Font.css';
+    import './Font.css';
 </script>
 
 <div class="app">

@@ -1,26 +1,9 @@
-<script>
-    export let height = '3rem'                             /* Высота поля */
-    export let width = '15rem'                             /* Ширина поля */
-    export let label = 'Course'                            /* Надпись */
-    export let borderRadius = '0.28rem';                   /* Радиус скругления углов */
-    export let effectsTimeCode = '0.3s';                   /* Тайм-код для применения того или иного эффекта */
-    export let paddingLeft = '0.85rem';                    /* Отступ от левой границы до курсора */
-    export let paddingRight = '0.85rem';                   /* Отступ до правой границы */
-    export let fontSize = '1.12rem';                       /* Размер шрифта */
-    export let labelColor = '#c8c8c8';                     /* Цвет надписи по умолчанию*/
-    export let primaryColor = '#5bb056';                   /* Основной цвет*/
-    export let borderColor = '#c4c4c4';                    /* Цвет обводки */
-    export let hoverBorderColor = 'black';                 /* Цвет обводки при наведении */
-    export let backgroundColor = 'white';                  /* Цвет фона */
-</script>
-
 <div 
     class="input-container"
     style:width = {width}
 >
     <input 
         type = 'text'
-        id = 'input-base'
         placeholder = ''
         style:height = {height}
         style:border-radius = {borderRadius}
@@ -48,6 +31,22 @@
         {label}
     </label>
 </div>
+
+<script>
+    export let height = '3rem'                             /* Высота поля */
+    export let width = '15rem'                             /* Ширина поля */
+    export let label = 'Course'                            /* Надпись */
+    export let borderRadius = '0.28rem';                   /* Радиус скругления углов */
+    export let effectsTimeCode = '0.3s';                   /* Тайм-код для применения того или иного эффекта */
+    export let paddingLeft = '0.85rem';                    /* Отступ от левой границы до курсора */
+    export let paddingRight = '0.85rem';                   /* Отступ до правой границы */
+    export let fontSize = '1.12rem';                       /* Размер шрифта */
+    export let labelColor = '#c8c8c8';                     /* Цвет надписи по умолчанию*/
+    export let primaryColor = '#5bb056';                   /* Основной цвет*/
+    export let borderColor = '#c4c4c4';                    /* Цвет обводки */
+    export let hoverBorderColor = 'black';                 /* Цвет обводки при наведении */
+    export let backgroundColor = 'white';                  /* Цвет фона */
+</script>
 
 <style>
     input {
