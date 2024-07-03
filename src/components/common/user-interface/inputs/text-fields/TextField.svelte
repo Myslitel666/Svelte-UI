@@ -11,9 +11,9 @@
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
-        style:outline-color = {primaryColor}
+        style:outline-color = {color}
         style:font-width = 0.5rem
-        style:--Xl-primaryColor = {primaryColor}
+        style:--Xl-color = {color}
         style:--Xl-borderColor = {borderColor}
         style:--Xl-hoverBorderColor = {hoverBorderColor}
     />
@@ -23,9 +23,9 @@
         style:margin-left = {paddingLeft}
         style:transition = 'all {effectsTimeCode} ease'
         style:--Xl-liftingHeight = {height}
-        style:--Xl-primaryColor = {primaryColor}
+        style:--Xl-color = {color}
         style:--Xl-font-size = {fontSize}
-        style:--Xl-color = {labelColor}
+        style:--Xl-labelColor = {labelColor}
         style:--Xl-labelBgColor = {backgroundColor}
     >
         {label}
@@ -41,11 +41,12 @@
     export let paddingLeft = '0.85rem';                    /* Отступ от левой границы до курсора */
     export let paddingRight = '0.85rem';                   /* Отступ до правой границы */
     export let fontSize = '1.12rem';                       /* Размер шрифта */
-    export let labelColor = '#c8c8c8';                     /* Цвет надписи по умолчанию */
-    export let primaryColor = '#5bb056';                   /* Основной цвет */
-    export let borderColor = '#c4c4c4';                    /* Цвет обводки */
-    export let hoverBorderColor = 'black';                 /* Цвет обводки при наведении */
-    export let backgroundColor = 'white';                  /* Цвет фона */
+    export let color = '#5bb056';                          /* Основной цвет */
+
+    let labelColor = '#c8c8c8'; //Цвет надписи по умолчанию */
+    let borderColor = '#c4c4c4'; //Цвет обводки */
+    let hoverBorderColor = 'black'; //Цвет обводки при наведении */
+    let backgroundColor = 'white'; //Цвет фона */
 </script>
 
 <style>
@@ -58,7 +59,7 @@
     label {
         pointer-events: none; /* Нажатие на label не перекрывает не припятствует активации input */
         font-size: var(--Xl-font-size);
-        color: var(--Xl-color);
+        color: var(--Xl-labelColor);
     }
 
     .input-container {
@@ -76,7 +77,7 @@
     }
 
     input:focus + label {
-        color: var(--Xl-primaryColor); /* Изменяем цвет на основной цвет */
+        color: var(--Xl-color); /* Изменяем цвет на основной цвет */
     }
 
     input:focus + label, input:not(:placeholder-shown) + label {

@@ -5,12 +5,13 @@
 	<Switch />
 </div>
 <div class='component'>
-	<TextField />
+	<ColorThemeSwitch />
 </div>
 
 <script>
 	import TextField from '../components/common/user-interface/inputs/text-fields/TextField.svelte';
 	import Switch from '../components/common/user-interface/inputs/switches/Switch.svelte';
+	import ColorThemeSwitch from '../components/common/user-interface/inputs/switches/ColorThemeSwitch.svelte';
 </script>
 
 <style>

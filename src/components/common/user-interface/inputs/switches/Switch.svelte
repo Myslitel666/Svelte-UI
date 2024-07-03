@@ -4,7 +4,7 @@
     <span 
         class="track"
         style:height = {height}
-        style:background-color= {`${checked ? primaryColor : '#e4e4e4'}`}
+        style:background-color = {`${checked ? color : '#e4e4e4'}`}
         style:--Xl-border-radius = {borderRadius}
     >
     </span>
@@ -13,6 +13,9 @@
         style:transform = {`translate(${checked ? '1.76rem' : '0.26rem'}, 0.26rem)`}
         style:--Xl-border-radius = {borderRadius}
     >
+        {#if activeSwitchIcon != '' && disabledSwitchIcon != ''}
+            <img src = {checked ? disabledSwitchIcon : activeSwitchIcon} alt = '' class = 'ico'/>
+        {/if}
     </span>
     <input 
         type="checkbox" 
@@ -23,10 +26,13 @@
 </div>
 
 <script>
-    export let borderRadius = '1rem';                      /* Радиус скругления углов */
-    export let primaryColor = '#5bb056';                   /* Основной цвет*/
-    let checked = false; // начальное состояние переключателя
+    export let checked = false;                                /* начальное состояние переключателя */
+    export let color = '#5bb056';                              /* Основной цвет */
+    export let activeSwitchIcon = '';                          /* Иконка Switch'а в активном состоянии */
+    export let disabledSwitchIcon = '';                        /* Иконка Switch'а в отключенном состоянии */
+
     let height = '2rem'; // Высота Switch'а
+    let borderRadius = '1rem'; // Радиус скругления углов
 
     function toggleSwitch() {
         checked = !checked; // изменение состояния при клике
@@ -54,5 +60,12 @@
         height: 1.5rem;
         border-radius: var(--Xl-border-radius);
         transition: .3s;
+        display: flex; /* Используем Flexbox для центрирования */
+        justify-content: center; /* Центрируем по горизонтали */
+        align-items: center; /* Центрируем по вертикали */
+    }
+    .ico {
+        width: 1.1rem;
+        height: 1.1rem;
     }
 </style>
