@@ -4,6 +4,9 @@
 <div class='component'>
 	<Switch />
 </div>
+<div class='component'>
+	<TextField />
+</div>
 
 <script>
 	import TextField from '../components/common/user-interface/inputs/text-fields/TextField.svelte';

@@ -41,8 +41,8 @@
     export let paddingLeft = '0.85rem';                    /* Отступ от левой границы до курсора */
     export let paddingRight = '0.85rem';                   /* Отступ до правой границы */
     export let fontSize = '1.12rem';                       /* Размер шрифта */
-    export let labelColor = '#c8c8c8';                     /* Цвет надписи по умолчанию*/
-    export let primaryColor = '#5bb056';                   /* Основной цвет*/
+    export let labelColor = '#c8c8c8';                     /* Цвет надписи по умолчанию */
+    export let primaryColor = '#5bb056';                   /* Основной цвет */
     export let borderColor = '#c4c4c4';                    /* Цвет обводки */
     export let hoverBorderColor = 'black';                 /* Цвет обводки при наведении */
     export let backgroundColor = 'white';                  /* Цвет фона */
@@ -56,6 +56,7 @@
     }
 
     label {
+        pointer-events: none; /* Нажатие на label не перекрывает не припятствует активации input */
         font-size: var(--Xl-font-size);
         color: var(--Xl-color);
     }
