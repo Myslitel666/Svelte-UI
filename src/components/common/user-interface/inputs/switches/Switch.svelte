@@ -1,16 +1,15 @@
-<div 
-    style:height = {height}
->
+<div style:height = {height}>
     <span 
         class="track"
         style:height = {height}
-        style:background-color = {`${checked ? color : '#e4e4e4'}`}
+        style:background-color = {checked ? theme.primaryColor : theme.fillColor}
         style:--Xl-border-radius = {borderRadius}
     >
     </span>
     <span 
         class="switch"
         style:transform = {`translate(${checked ? '1.76rem' : '0.26rem'}, 0.26rem)`}
+        style:--Xl-background-color = {theme.backgroundColor}
         style:--Xl-border-radius = {borderRadius}
     >
         {#if activeSwitchIcon != '' && disabledSwitchIcon != ''}
@@ -18,16 +17,18 @@
         {/if}
     </span>
     <input 
-        type="checkbox" 
+        type="checkbox"
         style:height = {height}
         bind:checked 
         on:click={toggleSwitch} 
     />
 </div>
 
-<script>
+<script lang='ts'>
+    import { type IColorThemeStore } from "../../../../../interfaces/common/user-interface/color-theme/IColorThemeStore";
+    import { themeStore } from '../../../../../store/ColorThemeStore';
+
     export let checked = false;                                /* начальное состояние переключателя */
-    export let color = '#5bb056';                              /* Основной цвет */
     export let activeSwitchIcon = '';                          /* Иконка Switch'а в активном состоянии */
     export let disabledSwitchIcon = '';                        /* Иконка Switch'а в отключенном состоянии */
 
@@ -37,6 +38,13 @@
     function toggleSwitch() {
         checked = !checked; // изменение состояния при клике
     }
+
+    let theme: IColorThemeStore;
+
+    // Подписываемся на изменения темы
+    themeStore.subscribe(value => {
+        theme = value;
+    });
 </script>
 
 <style>
@@ -55,7 +63,7 @@
     }
     .switch {
         position: absolute;
-        background-color: #ffffff;
+        background-color: var(--Xl-background-color);
         width: 1.5rem;
         height: 1.5rem;
         border-radius: var(--Xl-border-radius);

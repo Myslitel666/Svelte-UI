@@ -1,10 +1,20 @@
-<Switch 
-    checked = {checked}
-    activeSwitchIcon = {lightThemeIcon}
-    disabledSwitchIcon = {darkThemeIcon}
-/>
+<div 
+    on:click = {()=> {
+        toggleThemeMode();
+    }}
+    on:keydown={()=> {}}
+    role="button" 
+    tabindex="0" 
+>
+    <Switch 
+        checked = {checked}
+        activeSwitchIcon = {lightThemeIcon}
+        disabledSwitchIcon = {darkThemeIcon}
+    />
+</div>
 
-<script>
+<script lang='ts'>
+    import { toggleThemeMode } from '../../../../../store/ColorThemeStore';
     import Switch from "./Switch.svelte";
 
     export let checked = false;                                                     /* начальное состояние переключателя */

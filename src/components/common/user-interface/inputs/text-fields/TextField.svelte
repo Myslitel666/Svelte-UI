@@ -11,11 +11,11 @@
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
-        style:outline-color = {color}
+        style:outline-color = {theme.primaryColor}
         style:font-width = 0.5rem
-        style:--Xl-color = {color}
-        style:--Xl-borderColor = {borderColor}
-        style:--Xl-hoverBorderColor = {hoverBorderColor}
+        style:--Xl-color = {theme.primaryColor}
+        style:--Xl-borderColor = {theme.borderColor}
+        style:--Xl-hoverBorderColor = {theme.textColor}
     />
     <label 
         for='input-base'
@@ -23,16 +23,19 @@
         style:margin-left = {paddingLeft}
         style:transition = 'all {effectsTimeCode} ease'
         style:--Xl-liftingHeight = {height}
-        style:--Xl-color = {color}
+        style:--Xl-color = {theme.primaryColor}
         style:--Xl-font-size = {fontSize}
-        style:--Xl-labelColor = {labelColor}
-        style:--Xl-labelBgColor = {backgroundColor}
+        style:--Xl-labelColor = {theme.labelColor}
+        style:--Xl-labelBgColor = {theme.backgroundColor}
     >
         {label}
     </label>
 </div>
 
-<script>
+<script lang='ts'>
+	import {type IColorThemeStore} from '../../../../../interfaces/common/user-interface/color-theme/IColorThemeStore';
+    import { themeStore } from '../../../../../store/ColorThemeStore';
+
     export let height = '3rem'                             /* Высота поля */
     export let width = '15rem'                             /* Ширина поля */
     export let label = 'Course'                            /* Надпись */
@@ -41,12 +44,13 @@
     export let paddingLeft = '0.85rem';                    /* Отступ от левой границы до курсора */
     export let paddingRight = '0.85rem';                   /* Отступ до правой границы */
     export let fontSize = '1.12rem';                       /* Размер шрифта */
-    export let color = '#5bb056';                          /* Основной цвет */
 
-    let labelColor = '#c8c8c8'; //Цвет надписи по умолчанию */
-    let borderColor = '#c4c4c4'; //Цвет обводки */
-    let hoverBorderColor = 'black'; //Цвет обводки при наведении */
-    let backgroundColor = 'white'; //Цвет фона */
+    let theme: IColorThemeStore;
+
+    // Подписываемся на изменения темы
+    themeStore.subscribe(value => {
+        theme = value;
+    });
 </script>
 
 <style>
