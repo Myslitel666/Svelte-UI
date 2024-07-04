@@ -25,8 +25,8 @@
 </div>
 
 <script lang='ts'>
-    import { type IColorThemeStore } from "../../../../../interfaces/common/user-interface/color-theme/IColorThemeStore";
-    import { themeStore } from '../../../../../store/ColorThemeStore';
+    import { type IColorThemeStore } from "../../../interfaces/color-theme/IColorThemeStore";
+    import { themeStore } from '../../../store/ColorThemeStore';
 
     export let checked = false;                                /* начальное состояние переключателя */
     export let activeSwitchIcon = '';                          /* Иконка Switch'а в активном состоянии */
@@ -59,7 +59,7 @@
         position: absolute;
         width: 3.55rem;
         border-radius: var(--Xl-border-radius);
-        transition: .3s;
+        transition: 0.6s;
     }
     .switch {
         position: absolute;

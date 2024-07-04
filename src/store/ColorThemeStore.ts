@@ -15,9 +15,23 @@ const theme = derived(themeMode, $themeMode => ({
     themeMode: $themeMode // добавляем режим темы, чтобы отслеживать его изменения
 }));
 
+// Функция, которая возвращает противоположную тему
+const getOppositeTheme = (theme: string) => {
+    if (theme === 'light') {
+        return 'dark';
+    }
+
+    return 'light';
+};
+
 // Функция для переключения режима темы
 const toggleThemeMode = () => {
-    themeMode.update(current => (current === 'light' ? 'dark' : 'light'));
+    themeMode.update(current => getOppositeTheme(current));
+
+    themeMode.subscribe(value => {
+        window.document.body.classList.remove(getOppositeTheme(value));
+		window.document.body.classList.toggle(value)
+	});
 };
 
 // Экспортируем все необходимые элементы

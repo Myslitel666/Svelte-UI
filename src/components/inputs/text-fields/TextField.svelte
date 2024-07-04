@@ -33,8 +33,8 @@
 </div>
 
 <script lang='ts'>
-	import {type IColorThemeStore} from '../../../../../interfaces/common/user-interface/color-theme/IColorThemeStore';
-    import { themeStore } from '../../../../../store/ColorThemeStore';
+	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
+    import { themeStore } from '../../../store/ColorThemeStore';
 
     export let height = '3rem'                             /* Высота поля */
     export let width = '15rem'                             /* Ширина поля */
