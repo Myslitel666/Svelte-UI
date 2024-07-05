@@ -4,6 +4,9 @@
         style:height = {height}
         style:background-color = {checked ? theme.primaryColor : theme.fillColor}
         style:--Xl-border-radius = {borderRadius}
+        on:keydown={()=> {}}
+        role="button" 
+        tabindex="0" 
     >
     </span>
     <span 
@@ -20,7 +23,10 @@
         type="checkbox"
         style:height = {height}
         bind:checked 
-        on:click={toggleSwitch} 
+        on:click={()=> {
+            toggleSwitch();
+            onClick();
+        }} 
     />
 </div>
 
@@ -31,6 +37,7 @@
     export let checked = false;                                /* начальное состояние переключателя */
     export let activeSwitchIcon = '';                          /* Иконка Switch'а в активном состоянии */
     export let disabledSwitchIcon = '';                        /* Иконка Switch'а в отключенном состоянии */
+    export let onClick = () => {};                             /* Обработчик нажатия */
 
     let height = '2rem'; // Высота Switch'а
     let borderRadius = '1rem'; // Радиус скругления углов

@@ -5,9 +5,10 @@
     <input 
         type = 'text'
         placeholder = ''
-        style:height = {height}
+        style:--Xl-height = {height}
         style:border-radius = {borderRadius}
-        style:transition = 'border-color {effectsTimeCode} ease'
+        style:transition = 'all {effectsTimeCode} ease'
+        style:background-color = {theme.backgroundColor}
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
@@ -16,6 +17,7 @@
         style:--Xl-color = {theme.primaryColor}
         style:--Xl-borderColor = {theme.borderColor}
         style:--Xl-hoverBorderColor = {theme.textColor}
+        style:--Xl-borderWidthActive = {borderWidthActive}
     />
     <label 
         for='input-base'
@@ -44,6 +46,7 @@
     export let paddingLeft = '0.85rem';                    /* Отступ от левой границы до курсора */
     export let paddingRight = '0.85rem';                   /* Отступ до правой границы */
     export let fontSize = '1.12rem';                       /* Размер шрифта */
+    export let borderWidthActive: '0.02rem';
 
     let theme: IColorThemeStore;
 
@@ -55,6 +58,7 @@
 
 <style>
     input {
+        height: var(--Xl-height);
         border-color: var(--Xl-borderColor);
         border-width: 1px;
         border-style: solid;
@@ -74,6 +78,13 @@
 
     input:hover {
         border-color: var(--Xl-hoverBorderColor);
+    }
+
+    input:focus {
+        outline: none;
+        border-color: var(--Xl-color);
+        border-width: var(--Xl-borderWidthActive);
+        height: calc(var(--Xl-height) - 0.15rem);
     }
 
     label:hover {

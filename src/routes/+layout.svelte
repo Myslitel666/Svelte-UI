@@ -19,12 +19,3 @@
 		theme = value;
 	});
 </script>
-
-<style>
-	:global(body.dark) {
-        background-color: #161616;
-    }
-	:global(body.light) {
-        background-color: white;
-    }
-</style>

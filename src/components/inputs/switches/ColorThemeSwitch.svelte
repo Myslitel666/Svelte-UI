@@ -1,15 +1,9 @@
-<div 
-    on:click = {()=> {
-        toggleThemeMode();
-    }}
-    on:keydown={()=> {}}
-    role="button" 
-    tabindex="0" 
->
+<div>
     <Switch 
         checked = {checked}
         activeSwitchIcon = {lightThemeIcon}
         disabledSwitchIcon = {darkThemeIcon}
+        onClick = {toggleThemeMode}
     />
 </div>
 
