@@ -6,15 +6,16 @@
         type = 'text'
         placeholder = ''
         style:--Xl-height = {height}
+        style:border = none
         style:border-radius = {borderRadius}
-        style:transition = 'all {effectsTimeCode} ease'
+        style:transition = 'outline-color {effectsTimeCode} ease'
         style:background-color = {theme.backgroundColor}
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
-        style:outline-color = {theme.primaryColor}
         style:font-width = 0.5rem
         style:--Xl-color = {theme.primaryColor}
+        style:--Xl-textColor = {theme.textColor}
         style:--Xl-borderColor = {theme.borderColor}
         style:--Xl-hoverBorderColor = {theme.textColor}
         style:--Xl-borderWidthActive = {borderWidthActive}
@@ -46,7 +47,7 @@
     export let paddingLeft = '0.85rem';                    /* Отступ от левой границы до курсора */
     export let paddingRight = '0.85rem';                   /* Отступ до правой границы */
     export let fontSize = '1.12rem';                       /* Размер шрифта */
-    export let borderWidthActive: '0.02rem';
+    export let borderWidthActive: '10px';
 
     let theme: IColorThemeStore;
 
@@ -59,9 +60,10 @@
 <style>
     input {
         height: var(--Xl-height);
-        border-color: var(--Xl-borderColor);
-        border-width: 1px;
-        border-style: solid;
+        outline-color: var(--Xl-borderColor);
+        outline-width: 1px;
+        outline-style: solid;
+        color: var(--Xl-textColor);
     }
 
     label {
@@ -77,14 +79,12 @@
     }
 
     input:hover {
-        border-color: var(--Xl-hoverBorderColor);
+        outline-color: var(--Xl-hoverBorderColor);
     }
 
     input:focus {
-        outline: none;
-        border-color: var(--Xl-color);
-        border-width: var(--Xl-borderWidthActive);
-        height: calc(var(--Xl-height) - 0.15rem);
+        outline-color: var(--Xl-color);
+        outline-width: 2px;
     }
 
     label:hover {
@@ -93,6 +93,7 @@
 
     input:focus + label {
         color: var(--Xl-color); /* Изменяем цвет на основной цвет */
+        font-weight: 100;
     }
 
     input:focus + label, input:not(:placeholder-shown) + label {
