@@ -12,6 +12,6 @@
     import { type IColorThemeStore } from "../../interfaces/color-theme/IColorThemeStore";
     import { themeStore } from '../../store/ColorThemeStore';
 
-    export let stroke = 'red';                                 
-    export let size = '1.1rem'
+    export let stroke: string = 'red';                                 
+    export let size: string = '1.1rem'
 </script>

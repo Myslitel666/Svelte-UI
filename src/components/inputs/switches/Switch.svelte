@@ -31,10 +31,10 @@
     import { type IColorThemeStore } from "../../../interfaces/color-theme/IColorThemeStore";
     import { themeStore } from '../../../store/ColorThemeStore';
 
-    export let checked = false;                                /* начальное состояние переключателя */
-    export let activeSwitchIcon = '';                          /* Иконка Switch'а в активном состоянии */
-    export let disabledSwitchIcon = '';                        /* Иконка Switch'а в отключенном состоянии */
-    export let onClick = () => {};                             /* Обработчик нажатия */
+    export let checked: boolean = false;                   /* начальное состояние переключателя */
+    export let activeSwitchIcon: string = '';              /* Иконка Switch'а в активном состоянии */
+    export let disabledSwitchIcon: string = '';            /* Иконка Switch'а в отключенном состоянии */
+    export let onClick = () => {};                         /* Обработчик нажатия */
 
     let height = '2rem'; // Высота Switch'а
     let borderRadius = '1rem'; // Радиус скругления углов

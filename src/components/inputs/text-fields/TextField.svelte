@@ -17,7 +17,6 @@
         style:--Xl-border-color = {theme.borderColor}
         style:--Xl-textColor = {theme.textColor}
         style:--Xl-hoverBorderColor = {theme.textColor}
-        style:--Xl-borderWidthActive = {borderWidthActive}
     />
     <label 
         for='text-field'
@@ -37,14 +36,13 @@
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../store/ColorThemeStore';
 
-    export let height = '3rem'                             /* Высота поля */
-    export let width = '15rem'                             /* Ширина поля */
-    export let label = 'Course'                            /* Надпись */
-    export let borderRadius = '0.28rem';                   /* Радиус скругления углов */
-    export let paddingLeft = '0.85rem';                    /* Отступ от левой границы до курсора */
-    export let paddingRight = '0.85rem';                   /* Отступ до правой границы */
-    export let fontSize = '1.12rem';                       /* Размер шрифта */
-    export let borderWidthActive: '10px';
+    export let height: string = '3rem'                      /* Высота поля */
+    export let width: string = '15rem'                      /* Ширина поля */
+    export let label: string = 'Course'                     /* Надпись */
+    export let borderRadius: string = '0.28rem';            /* Радиус скругления углов */
+    export let paddingLeft: string = '0.85rem';             /* Отступ от левой границы до курсора */
+    export let paddingRight: string = '0.85rem';            /* Отступ до правой границы */
+    export let fontSize: string = '1.12rem';                /* Размер шрифта */
 
     let theme: IColorThemeStore;
 

@@ -13,6 +13,6 @@
     import { type IColorThemeStore } from "../../interfaces/color-theme/IColorThemeStore";
     import { themeStore } from '../../store/ColorThemeStore';
 
-    export let fill = 'red';                                 
-    export let size = '2rem'
+    export let fill: string = 'red';                                 
+    export let size: string = '2rem'
 </script>
