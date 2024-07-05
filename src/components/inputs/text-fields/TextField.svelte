@@ -3,6 +3,7 @@
     style:width = {width}
 >
     <input 
+        id = 'text-field'
         type = 'text'
         placeholder = ''
         style:--Xl-height = {height}
@@ -19,7 +20,7 @@
         style:--Xl-borderWidthActive = {borderWidthActive}
     />
     <label 
-        for='input-base'
+        for='text-field'
         style:position = 'absolute'
         style:margin-left = {paddingLeft}
         style:--Xl-color = {theme.primaryColor}

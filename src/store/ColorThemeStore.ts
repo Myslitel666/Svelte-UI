@@ -39,9 +39,5 @@ const toggleThemeMode = () => {
     });
 };
 
-// Подписываемся один раз
-themeMode.subscribe(value => {
-    console.log(`Current theme: ${value}`);
-});
 // Экспортируем все необходимые элементы
 export { theme as themeStore, themeMode, toggleThemeMode };
