@@ -12,6 +12,17 @@
     import { type IColorThemeStore } from "../../interfaces/color-theme/IColorThemeStore";
     import { themeStore } from '../../store/ColorThemeStore';
 
-    export let stroke: string = 'red';                                 
-    export let size: string = '1.1rem'
+    export let stroke: string;                                 
+    export let size: string = '1.1rem';
+
+    let theme: IColorThemeStore | undefined;
+
+    // Подписываемся на изменения темы
+    themeStore.subscribe(value => {
+        theme = value;
+    });
+
+    if (theme) {
+        stroke = theme.textColor;
+    }
 </script>

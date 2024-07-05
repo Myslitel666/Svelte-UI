@@ -12,11 +12,13 @@
         style:--Xl-background-color = {theme.backgroundColor}
         style:--Xl-border-radius = {borderRadius}
     >
-        {#if activeSwitchIcon != '' && disabledSwitchIcon != ''}
-            <img src = {checked ? disabledSwitchIcon : activeSwitchIcon} alt = '' class = 'ico'/>
+        {#if checked}
+            <slot name="activeIcon" />     <!-- Компонент switch'а для активного состояния -->
+        {:else}
+            <slot name="disabledIcon" />   <!-- Компонент switch'а для неактивного состояния -->
         {/if}
     </span>
-    <input 
+    <input
         type="checkbox"
         style:height = {height}
         bind:checked 
@@ -32,8 +34,6 @@
     import { themeStore } from '../../../store/ColorThemeStore';
 
     export let checked: boolean = false;                   /* начальное состояние переключателя */
-    export let activeSwitchIcon: string = '';              /* Иконка Switch'а в активном состоянии */
-    export let disabledSwitchIcon: string = '';            /* Иконка Switch'а в отключенном состоянии */
     export let onClick = () => {};                         /* Обработчик нажатия */
 
     let height = '2rem'; // Высота Switch'а

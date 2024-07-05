@@ -13,6 +13,17 @@
     import { type IColorThemeStore } from "../../interfaces/color-theme/IColorThemeStore";
     import { themeStore } from '../../store/ColorThemeStore';
 
-    export let fill: string = 'red';                                 
-    export let size: string = '2rem'
+    export let fill: string;                                 
+    export let size: string = '2rem';
+
+    let theme: IColorThemeStore | undefined;
+
+    // Подписываемся на изменения темы
+    themeStore.subscribe(value => {
+        theme = value;
+    });
+
+    if (theme) {
+        fill = theme.textColor;
+    }
 </script>
