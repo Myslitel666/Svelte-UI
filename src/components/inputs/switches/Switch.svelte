@@ -4,9 +4,6 @@
         style:height = {height}
         style:background-color = {checked ? theme.primaryColor : theme.fillColor}
         style:--Xl-border-radius = {borderRadius}
-        on:keydown={()=> {}}
-        role="button" 
-        tabindex="0" 
     >
     </span>
     <span 
@@ -66,7 +63,7 @@
         position: absolute;
         width: 3.55rem;
         border-radius: var(--Xl-border-radius);
-        transition: 0.6s;
+        transition: var(--Xl-effectsTimeCode);
     }
     .switch {
         position: absolute;
@@ -74,7 +71,7 @@
         width: 1.5rem;
         height: 1.5rem;
         border-radius: var(--Xl-border-radius);
-        transition: .3s;
+        transition: var(--Xl-effectsTimeCode);
         display: flex; /* Используем Flexbox для центрирования */
         justify-content: center; /* Центрируем по горизонтали */
         align-items: center; /* Центрируем по вертикали */

@@ -6,10 +6,10 @@ const themeMode = writable('light');
 // Определение цветов на основе текущей темы с использованием тернарных операторов
 const theme = derived(themeMode, $themeMode => ({
     backgroundColor: $themeMode === 'light' ? 'white' : 'black',
-    primaryColor: $themeMode === 'light' ? '#5bb056' : '#f21919',
-    labelColor: $themeMode === 'light' ? '#c8c8c8' : '#484848',
-    borderColor: $themeMode === 'light' ? '#c4c4c4' : '#444444',
-    fillColor: $themeMode === 'light' ? '#e4e4e4' : '#888888',
+    primaryColor: $themeMode === 'light' ? '#5bb056' : '#f41c1c',
+    labelColor: $themeMode === 'light' ? '#b3b3b3' : '#808080',
+    borderColor: $themeMode === 'light' ? '#c3c3c3' : '#606060',
+    fillColor: $themeMode === 'light' ? '#e2e2e2' : '#424242',
     textColor: $themeMode === 'light' ? '#000000' : '#ffffff',
     buttonColor: $themeMode === 'light' ? '#007bff' : '#1e90ff',
     themeMode: $themeMode // добавляем режим темы, чтобы отслеживать его изменения
@@ -26,13 +26,22 @@ const getOppositeTheme = (theme: string) => {
 
 // Функция для переключения режима темы
 const toggleThemeMode = () => {
-    themeMode.update(current => getOppositeTheme(current));
-
-    themeMode.subscribe(value => {
-        window.document.body.classList.remove(getOppositeTheme(value));
-		window.document.body.classList.toggle(value)
-	});
+    themeMode.update(current => {
+        const newTheme = getOppositeTheme(current);
+        
+        // Удаляем текущую тему
+        document.body.classList.remove(current);
+        
+        // Добавляем новую тему
+        document.body.classList.add(newTheme);
+        
+        return newTheme;
+    });
 };
 
+// Подписываемся один раз
+themeMode.subscribe(value => {
+    console.log(`Current theme: ${value}`);
+});
 // Экспортируем все необходимые элементы
 export { theme as themeStore, themeMode, toggleThemeMode };

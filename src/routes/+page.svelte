@@ -18,7 +18,7 @@
 
 <style>
 	.component {
-		margin-top: 1rem
+		margin-top: 0.5rem;
 	}
 
 	#page {

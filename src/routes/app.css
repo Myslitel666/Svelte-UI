@@ -3,12 +3,20 @@
 
 body {
 	margin: 0;
-	transition: 0.6s;
+	transition: background-color 0.3s;
+	background-color: var(--Xl-background-color);
+	--Xl-dark-bg-color: #161616;
+	--Xl-light-bg-color: #fff;
+	--Xl-background-color: var(--Xl-light-bg-color);
+	--Xl-effectsTimeCode: 0.3s;
 }
 
 .dark {
-	background-color: #161616;
+	--Xl-background-color: var(--Xl-dark-bg-color);
+	background-color: var(--Xl-background-color);
 }
+
 .light {
-	background-color: white;
+	--Xl-background-color: var(--Xl-light-bg-color);
+	background-color: var(--Xl-background-color);
 }
