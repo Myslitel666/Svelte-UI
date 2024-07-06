@@ -13,20 +13,20 @@
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
         style:font-width = 0.5rem
-        style:--Xl-color = {theme.primaryColor}
-        style:--Xl-border-color = {theme.borderColor}
-        style:--Xl-textColor = {theme.textColor}
-        style:--Xl-hoverBorderColor = {theme.textColor}
+        style:--Xl-color = {theme.colors.primary}
+        style:--Xl-border-color = {theme.border.disabled.color}
+        style:--Xl-textColor = {theme.colors.text.primary}
+        style:--Xl-hoverBorderColor = {theme.colors.text.primary}
     />
     <label 
         for='text-field'
         style:position = 'absolute'
         style:margin-left = {paddingLeft}
-        style:--Xl-color = {theme.primaryColor}
+        style:--Xl-color = {theme.colors.primary}
         style:--Xl-font-size = {fontSize}
         style:--Xl-liftingHeight = {height}
-        style:--Xl-labelColor = {theme.labelColor}
-        style:--Xl-labelBgColor = {theme.backgroundColor}
+        style:--Xl-labelColor = {theme.colors.text.label}
+        style:--Xl-labelBgColor = {theme.colors.background}
     >
         {label}
     </label>
@@ -60,7 +60,7 @@
         outline-style: solid;
         color: var(--Xl-textColor);
         background-color: var(--Xl-background-color);
-        transition: outline-color var(--Xl-effectsTimeCode)
+        transition: all var(--Xl-effectsTimeCode)
     }
 
     label {

@@ -2,14 +2,14 @@
     <span 
         class="track"
         style:height = {height}
-        style:background-color = {checked ? theme.primaryColor : theme.fillColor}
+        style:background-color = {checked ? theme.colors.primary : theme.disabled.fill}
         style:--Xl-border-radius = {borderRadius}
     >
     </span>
     <span 
         class="switch"
         style:transform = {`translate(${checked ? '1.76rem' : '0.26rem'}, 0.26rem)`}
-        style:--Xl-background-color = {theme.backgroundColor}
+        style:--Xl-background-color = {theme.colors.background}
         style:--Xl-border-radius = {borderRadius}
     >
         {#if checked}
@@ -19,7 +19,7 @@
         {/if}
     </span>
     <input
-        type="checkbox"Ы
+        type="checkbox"
         style:height = {height}
         bind:checked 
         on:click={()=> {
@@ -75,9 +75,5 @@
         display: flex; /* Используем Flexbox для центрирования */
         justify-content: center; /* Центрируем по горизонтали */
         align-items: center; /* Центрируем по вертикали */
-    }
-    .ico {
-        width: 1.1rem;
-        height: 1.1rem;
     }
 </style>

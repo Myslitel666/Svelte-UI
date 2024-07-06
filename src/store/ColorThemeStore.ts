@@ -1,17 +1,37 @@
 import { writable, derived } from 'svelte/store';
+import { type IColorThemeStore } from '../interfaces/color-theme/IColorThemeStore';
 
 // Начальный режим темы
 const themeMode = writable('light');
 
 // Определение цветов на основе текущей темы с использованием тернарных операторов
-const theme = derived(themeMode, $themeMode => ({
-    backgroundColor: $themeMode === 'light' ? 'white' : 'black',
-    primaryColor: $themeMode === 'light' ? '#5bb056' : '#f41c1c',
-    labelColor: $themeMode === 'light' ? '#b3b3b3' : '#808080',
-    borderColor: $themeMode === 'light' ? '#c3c3c3' : '#606060',
-    fillColor: $themeMode === 'light' ? '#e2e2e2' : '#424242',
-    textColor: $themeMode === 'light' ? '#000000' : '#ffffff',
-    buttonColor: $themeMode === 'light' ? '#007bff' : '#1e90ff',
+const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
+    colors: {
+        primary: $themeMode === 'light' ? '#5bb056' : '#f41c1c',
+        secondary: $themeMode === 'light' ? '#d86ff2' : '#f314f0',
+        background: $themeMode === 'light' ? 'white' : 'black',
+        text: {
+            primary: $themeMode === 'light' ? '#000000' : '#ffffff',
+            label: $themeMode === 'light' ? '#b3b3b3' : '#808080',
+        },
+    },
+    border: {
+        disabled: {
+            color:  $themeMode === 'light' ? '#c3c3c3' : '#606060',
+            width: '1px',
+        },
+        active: {
+            width: '2px',
+        },
+        borderRadius: '4px',
+    },
+    action: {
+        hover: $themeMode === 'light' ? '#fdfdfd' : '#181818',
+        selected: $themeMode === 'light' ? '#ddd' : '#222',
+    },
+    disabled: {
+        fill: $themeMode === 'light' ? '#e2e2e2' : '#424242',
+    },
     themeMode: $themeMode // добавляем режим темы, чтобы отслеживать его изменения
 }));
 

@@ -1,10 +1,29 @@
 export interface IColorThemeStore {
-    backgroundColor: string;
-    primaryColor: string;
-    labelColor: string;
-    borderColor: string;
-    fillColor: string;
-    textColor: string;
-    buttonColor: string;
+    colors: {
+        primary: string,
+        secondary: string,
+        background: string;
+        text: {
+            primary: string,
+            label: string,
+        };
+    };
+    border: {
+        disabled: {
+            color:  string;
+            width: string;
+        },
+        active: {
+            width: string;
+        },
+        borderRadius: string;
+    };
+    action: {
+        hover: string;
+        selected: string;
+    },
+    disabled: {
+        fill: string,
+    };
     themeMode: string;
 }

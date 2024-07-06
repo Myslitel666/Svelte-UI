@@ -3,12 +3,12 @@
 
 body {
 	margin: 0;
-	transition: background-color 0.3s;
+	transition: background-color var(--Xl-effectsTimeCode);
 	background-color: var(--Xl-background-color);
 	--Xl-dark-bg-color: #161616;
 	--Xl-light-bg-color: #fff;
 	--Xl-background-color: var(--Xl-light-bg-color);
-	--Xl-effectsTimeCode: 0.3s;
+	--Xl-effectsTimeCode: 0.15s;
 }
 
 .dark {
