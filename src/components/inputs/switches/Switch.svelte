@@ -19,7 +19,7 @@
         {/if}
     </span>
     <input
-        type="checkbox"
+        type="checkbox"Ы
         style:height = {height}
         bind:checked 
         on:click={()=> {
