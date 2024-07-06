@@ -4,16 +4,11 @@ import { type IColorThemeStore } from '../interfaces/color-theme/IColorThemeStor
 // Начальный режим темы
 const themeMode = writable('light');
 
-// Определение цветов на основе текущей темы с использованием тернарных операторов
+// Определение темы оформления пользовательского интерфейса
 const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
-    colors: {
-        primary: $themeMode === 'light' ? '#5bb056' : '#f41c1c',
-        secondary: $themeMode === 'light' ? '#d86ff2' : '#f314f0',
-        background: $themeMode === 'light' ? 'white' : 'black',
-        text: {
-            primary: $themeMode === 'light' ? '#000000' : '#ffffff',
-            label: $themeMode === 'light' ? '#b3b3b3' : '#808080',
-        },
+    action: {
+        hover: $themeMode === 'light' ? '#fdfdfd' : '#181818',
+        selected: $themeMode === 'light' ? '#ddd' : '#222',
     },
     border: {
         disabled: {
@@ -25,14 +20,36 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
         },
         borderRadius: '4px',
     },
-    action: {
-        hover: $themeMode === 'light' ? '#fdfdfd' : '#181818',
-        selected: $themeMode === 'light' ? '#ddd' : '#222',
+    colors: {
+        primary: $themeMode === 'light' ? '#5bb056' : '#f41c1c',
+        secondary: $themeMode === 'light' ? '#d86ff2' : '#f314f0',
+        background: $themeMode === 'light' ? 'white' : 'black',
+        text: {
+            primary: $themeMode === 'light' ? '#000000' : '#ffffff',
+            label: $themeMode === 'light' ? '#b3b3b3' : '#808080',
+        },
+    },
+    controls: {
+        height: '3rem',
+        button: {
+            minWidth: '15rem',
+            padding: '0.85rem',
+        },
+        textField: {
+            minWidth: '15rem',
+            padding: '0.85rem',
+        },
     },
     disabled: {
         fill: $themeMode === 'light' ? '#e2e2e2' : '#424242',
     },
-    themeMode: $themeMode // добавляем режим темы, чтобы отслеживать его изменения
+    typography: {
+        font: 'Century Gothic',
+        fontSize: '16px',
+        fontWeight: '100',
+        letterSpacing: '-0.02rem'
+    },
+    themeMode: $themeMode, // добавляем режим темы, чтобы отслеживать его изменения
 }));
 
 // Функция, которая возвращает противоположную тему

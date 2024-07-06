@@ -8,7 +8,7 @@ body {
 	--Xl-dark-bg-color: #161616;
 	--Xl-light-bg-color: #fff;
 	--Xl-background-color: var(--Xl-light-bg-color);
-	--Xl-effectsTimeCode: 0.15s;
+	--Xl-effectsTimeCode: 0.3s;
 }
 
 .dark {
