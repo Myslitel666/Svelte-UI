@@ -12,7 +12,7 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
     },
     border: {
         disabled: {
-            color:  $themeMode === 'light' ? '#c3c3c3' : '#606060',
+            color:  $themeMode === 'light' ? '#bebebe' : '#606060',
             width: '1px',
         },
         active: {
@@ -22,15 +22,14 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
     },
     colors: {
         primary: $themeMode === 'light' ? '#5bb056' : '#f41c1c',
-        secondary: $themeMode === 'light' ? '#d86ff2' : '#f314f0',
+        secondary: $themeMode === 'light' ? '#d06bcc' : '#ff35f8',
         background: $themeMode === 'light' ? 'white' : 'black',
         text: {
-            primary: $themeMode === 'light' ? '#111111' : '#ffffff',
+            primary: $themeMode === 'light' ? '#111111' : '#fff',
             label: $themeMode === 'light' ? '#b3b3b3' : '#808080',
         },
     },
     controls: {
-        height: '3rem',
         button: {
             minWidth: '15rem',
             padding: '0.85rem',
@@ -39,6 +38,7 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
             minWidth: '15rem',
             padding: '0.85rem',
         },
+        height: '3rem',
     },
     disabled: {
         fill: $themeMode === 'light' ? '#e2e2e2' : '#424242',

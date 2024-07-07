@@ -16,6 +16,8 @@
         style:--Xl-border-color = {borderColor}
         style:--Xl-color = {primaryColor}
         style:--Xl-height = {height}
+        style:--Xl-activeOutlineWidth = {activedOutlineWidth}
+        style:--Xl-disabledOutlineWidth = {disabledOutlineWidth}
         style:--Xl-hoverBorderColor = {textColor}
         style:--Xl-textColor = {textColor}
     />
@@ -36,17 +38,19 @@
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../store/ColorThemeStore';
 
-    export let borderColor: string;                         /* Цвет обводки */
-    export let borderRadius: string;                        /* Радиус скругления углов */
-    export let fontSize: string = '16px';                   /* Размер шрифта */
-    export let height: string;                              /* Высота поля */
-    export let label: string = 'Text Field'                 /* Надпись */
-    export let labelColor: string                           /* Цвет надписи */
-    export let width: string;                               /* Ширина поля */
-    export let paddingLeft: string;                         /* Отступ от левой границы до курсора */
-    export let paddingRight: string;                        /* Отступ от правой границы */
-    export let primaryColor: string;                        /* Основной цвет */
-    export let textColor: string;                           /* Цвет шрифта */
+    export let activedOutlineWidth = '';                 /* Толщина обводки в активном состоянии */
+    export let borderColor = '';                         /* Цвет обводки */
+    export let borderRadius = '';                        /* Радиус скругления углов */
+    export let disabledOutlineWidth = '';                /* Толщина обводки в неактивном состоянии */
+    export let fontSize = '16px';                        /* Размер шрифта */
+    export let height = '';                              /* Высота поля */
+    export let label = 'Text Field'                      /* Надпись */
+    export let labelColor ='';                           /* Цвет надписи */
+    export let paddingLeft = '';                         /* Отступ от левой границы до курсора */
+    export let paddingRight = '';                        /* Отступ от правой границы */
+    export let primaryColor = '';                        /* Основной цвет */
+    export let textColor = '';                           /* Цвет текста */
+    export let width = '';                               /* Ширина поля */
 
     let theme: IColorThemeStore | undefined;
 
@@ -63,8 +67,10 @@
 
     //Устанавливаем значения стилей после инициализации темы
     if (theme) {
+        activedOutlineWidth = theme.border.active.width;
         borderRadius = theme.border.borderRadius;
         height = theme.controls.height;
+        disabledOutlineWidth = theme.border.disabled.width;
         paddingLeft = theme.controls.textField.padding;
         paddingRight = paddingLeft;
         width = theme.controls.textField.minWidth;
@@ -74,12 +80,12 @@
 
 <style>
     input {
+        background-color: var(--Xl-background-color);
+        color: var(--Xl-textColor);
         height: var(--Xl-height);
         outline-color: var(--Xl-border-color);
-        outline-width: 1px;
         outline-style: solid;
-        color: var(--Xl-textColor);
-        background-color: var(--Xl-background-color);
+        outline-width: var(--Xl-disabledOutlineWidth);
         transition: outline-color var(--Xl-effectsTimeCode), background-color var(--Xl-effectsTimeCode);
     }
 
@@ -102,7 +108,7 @@
 
     input:focus {
         outline-color: var(--Xl-color);
-        outline-width: 2px;
+        outline-width: var(--Xl-activeOutlineWidth);
     }
 
     label:hover {
@@ -118,5 +124,6 @@
         font-size: 13px; /* Уменьшаем размер шрифта */
         background-color: var(--Xl-background-color);
         padding: 0 0.26rem 0 0.26rem;
+        transition: all var(--Xl-effectsTimeCode);
     }
 </style>
