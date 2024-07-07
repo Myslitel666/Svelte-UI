@@ -5,6 +5,7 @@
     <input 
         id = 'text-field'
         type = 'text'
+        autocomplete='off'
         placeholder = ''
         style:border = none
         style:border-radius = {borderRadius}
@@ -79,7 +80,7 @@
         outline-style: solid;
         color: var(--Xl-textColor);
         background-color: var(--Xl-background-color);
-        transition: all var(--Xl-effectsTimeCode);
+        transition: outline-color var(--Xl-effectsTimeCode), background-color var(--Xl-effectsTimeCode);
     }
 
     label {
@@ -102,10 +103,6 @@
     input:focus {
         outline-color: var(--Xl-color);
         outline-width: 2px;
-    }
-
-    #text-field:autofill {
-        background-color: var(--Xl-background-color);
     }
 
     label:hover {

@@ -25,7 +25,7 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
         secondary: $themeMode === 'light' ? '#d86ff2' : '#f314f0',
         background: $themeMode === 'light' ? 'white' : 'black',
         text: {
-            primary: $themeMode === 'light' ? '#000000' : '#ffffff',
+            primary: $themeMode === 'light' ? '#111111' : '#ffffff',
             label: $themeMode === 'light' ? '#b3b3b3' : '#808080',
         },
     },
