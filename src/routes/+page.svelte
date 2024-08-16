@@ -3,7 +3,8 @@
 		<TextField />
 	</div>
 	<div class='component'>
-		<Button/>
+		<Button>
+		</Button>
 	</div>
 	<div class='component'>
 		<Switch />

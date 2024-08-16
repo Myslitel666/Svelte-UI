@@ -2,14 +2,14 @@
     <span 
         class="track"
         style:height = {height}
-        style:background-color = {checked ? theme.colors.primary : theme.disabled.fill}
+        style:background-color = {checked ? color : theme?.disabled.fill}
         style:--Xl-border-radius = {borderRadius}
     >
     </span>
     <span 
         class="switch"
         style:transform = {`translate(${checked ? '1.76rem' : '0.26rem'}, 0.26rem)`}
-        style:--Xl-background-color = {theme.colors.background}
+        style:--Xl-background-color = {theme?.colors.background}
         style:--Xl-border-radius = {borderRadius}
     >
         {#if checked}
@@ -33,6 +33,7 @@
     import { type IColorThemeStore } from "../../../interfaces/color-theme/IColorThemeStore";
     import { themeStore } from '../../../store/ColorThemeStore';
 
+    export let color = '';                                 /* Цвет переключателя */
     export let checked: boolean = false;                   /* начальное состояние переключателя */
     export let onClick = () => {};                         /* Обработчик нажатия */
 
@@ -43,12 +44,16 @@
         checked = !checked; // изменение состояния при клике
     }
 
-    let theme: IColorThemeStore;
+    let theme: IColorThemeStore | undefined;
 
     // Подписываемся на изменения темы
     themeStore.subscribe(value => {
         theme = value;
     });
+
+    if (theme) {
+        if (!color) color = theme.colors.primary;
+    }
 </script>
 
 <style>

@@ -65,15 +65,15 @@
         textColor = theme.colors.text.primary;
     });
 
-    //Устанавливаем значения стилей после инициализации темы
+    //Устанавливаем значения стилей после инициализации темы с проверкой не передавал ли пользователь в компонент свои значения стилей
     if (theme) {
-        activedOutlineWidth = theme.border.active.width;
-        borderRadius = theme.border.borderRadius;
-        height = theme.controls.height;
-        disabledOutlineWidth = theme.border.disabled.width;
-        paddingLeft = theme.controls.textField.padding;
-        paddingRight = paddingLeft;
-        width = theme.controls.textField.minWidth;
+        if (!activedOutlineWidth) activedOutlineWidth = theme.border.active.width;
+        if (!borderRadius) borderRadius = theme.border.borderRadius;
+        if (!height) height = theme.controls.height;
+        if (!disabledOutlineWidth) disabledOutlineWidth = theme.border.disabled.width;
+        if (!paddingLeft) paddingLeft = theme.controls.textField.padding;
+        if (!paddingRight) paddingRight = paddingLeft;
+        if (!width) width = theme.controls.textField.minWidth;
     }
 
 </script>

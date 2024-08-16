@@ -1,6 +1,5 @@
 <div 
     class="input-container"
-    style:width = {width}
 >
     <button 
         id = 'text-field'
@@ -11,7 +10,8 @@
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
-        style:font-width = 0.5rem
+        style:min-width = {minWidth}
+        style:width={width}
         style:--Xl-border-color = {borderColor}
         style:--Xl-color = {primaryColor}
         style:--Xl-height = {height}
@@ -19,6 +19,7 @@
         style:--Xl-hoverBorderColor = {textColor}
         style:--Xl-textColor = {textColor}
     >
+        <slot name="content" />     <!-- Контент кнопки -->
     </button>
 </div>
 
@@ -31,13 +32,14 @@
     export let fontSize = '16px';                        /* Размер шрифта */
     export let height = '';                              /* Высота поля */
     export let labelColor ='';                           /* Цвет надписи */
+    export let minWidth = '';
     export let outlineWidth ='';                         /* Толщина обводки */
     export let paddingLeft = '';                         /* Отступ от левой границы до курсора */
     export let paddingRight = '';                        /* Отступ от правой границы */
     export let primaryColor = '';                        /* Основной цвет */
     export let secondaryColor = '';                      /* Вторичный цвет */
     export let textColor = '';                           /* Цвет текста */
-    export let width = '';                               /* Ширина поля */
+    export let width = '5rem';                           /* Ширина кнопки */
 
     let theme: IColorThemeStore | undefined;
 
@@ -55,12 +57,12 @@
 
     //Устанавливаем значения стилей после инициализации темы
     if (theme) {
-        borderRadius = theme.border.borderRadius;
-        height = theme.controls.height;
-        outlineWidth = theme.border.disabled.width;
-        paddingLeft = theme.controls.textField.padding;
-        paddingRight = paddingLeft;
-        width = theme.controls.textField.minWidth;
+        if (!borderRadius) borderRadius = theme.border.borderRadius;
+        if (!height) height = theme.controls.height;
+        if (!outlineWidth) outlineWidth = theme.border.disabled.width;
+        if (!paddingLeft) paddingLeft = theme.controls.textField.padding;
+        if (!paddingRight) paddingRight = paddingLeft;
+        if (!minWidth) minWidth = theme.controls.textField.minWidth;
     }
 
 </script>
