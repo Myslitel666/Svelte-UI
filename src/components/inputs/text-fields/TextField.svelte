@@ -52,6 +52,12 @@
     export let textColor = '';                           /* Цвет текста */
     export let width = '';                               /* Ширина поля */
 
+    // Флаги для отслеживания, передал ли пользователь значение извне
+    let isTextColorFromUser = textColor !== '';
+    let isBorderColorFromUser = borderColor !== '';
+    let isLabelColorFromUser = labelColor !== '';
+    let isPrimaryColorFromUser = primaryColor !== '';
+
     let theme: IColorThemeStore | undefined;
 
     // Подписываемся на изменения темы
@@ -59,10 +65,10 @@
         theme = value; //Инициализация объекта темы
 
         // Устанавливаем значения цветов при смене темы
-        borderColor = theme.border.disabled.color;
-        labelColor = theme.colors.text.label;
-        primaryColor = theme.colors.primary;
-        textColor = theme.colors.text.primary;
+        if (!isBorderColorFromUser) borderColor = theme.border.disabled.color;
+        if (!isLabelColorFromUser) labelColor = theme.colors.text.label;
+        if (!isPrimaryColorFromUser) primaryColor = theme.colors.primary;
+        if (!isTextColorFromUser) textColor = theme.colors.text.primary;
     });
 
     //Устанавливаем значения стилей после инициализации темы с проверкой не передавал ли пользователь в компонент свои значения стилей

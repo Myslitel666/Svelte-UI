@@ -41,6 +41,13 @@
     export let textColor = '';                           /* Цвет текста */
     export let width = '5rem';                           /* Ширина кнопки */
 
+    // Флаги для отслеживания, передал ли пользователь значение извне
+    let isTextColorFromUser = textColor !== '';
+    let isBorderColorFromUser = borderColor !== '';
+    let isLabelColorFromUser = labelColor !== '';
+    let isPrimaryColorFromUser = primaryColor !== '';
+    let isSecondaryColorFromUser = primaryColor !== '';
+
     let theme: IColorThemeStore | undefined;
 
     // Подписываемся на изменения темы
@@ -48,11 +55,11 @@
         theme = value; //Инициализация объекта темы
 
         // Устанавливаем значения цветов при смене темы
-        borderColor = theme.themeMode === 'light' ? theme.colors.text.primary : theme.colors.primary;
-        labelColor = theme.colors.text.label;
-        primaryColor = theme.colors.primary;
-        secondaryColor = theme.colors.secondary;
-        textColor = theme.colors.text.primary;
+        if (!isBorderColorFromUser) borderColor = theme.themeMode === 'light' ? theme.colors.text.primary : theme.colors.primary;
+        if (!isLabelColorFromUser) labelColor = theme.colors.text.label;
+        if (!isPrimaryColorFromUser) primaryColor = theme.colors.primary;
+        if (!isSecondaryColorFromUser) secondaryColor = theme.colors.secondary;
+        if (!isTextColorFromUser) textColor = theme.colors.text.primary;
     });
 
     //Устанавливаем значения стилей после инициализации темы

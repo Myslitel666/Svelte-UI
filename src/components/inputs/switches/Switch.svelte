@@ -2,14 +2,14 @@
     <span 
         class="track"
         style:height = {height}
-        style:background-color = {checked ? color : theme?.disabled.fill}
+        style:background-color = {checked ? color : theme.disabled.fill}
         style:--Xl-border-radius = {borderRadius}
     >
     </span>
     <span 
         class="switch"
         style:transform = {`translate(${checked ? '1.76rem' : '0.26rem'}, 0.26rem)`}
-        style:--Xl-background-color = {theme?.colors.background}
+        style:--Xl-background-color = {theme.colors.background}
         style:--Xl-border-radius = {borderRadius}
     >
         {#if checked}
@@ -40,20 +40,21 @@
     let height = '2rem'; // Высота Switch'а
     let borderRadius = '1rem'; // Радиус скругления углов
 
+    // Флаги для отслеживания, передал ли пользователь значение извне
+    let isColorFromUser = color !== '';
+
     function toggleSwitch() {
         checked = !checked; // изменение состояния при клике
     }
 
-    let theme: IColorThemeStore | undefined;
+    let theme: IColorThemeStore;
 
     // Подписываемся на изменения темы
     themeStore.subscribe(value => {
         theme = value;
-    });
 
-    if (theme) {
-        if (!color) color = theme.colors.primary;
-    }
+        if (!isColorFromUser) color = theme.colors.primary;
+    });
 </script>
 
 <style>
