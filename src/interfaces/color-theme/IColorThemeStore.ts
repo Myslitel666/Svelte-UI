@@ -26,6 +26,7 @@ export interface IColorThemeStore {
         button: {
             padding: string;
             minWidth: string;
+            filter: string;
         };
         textField: {
             minWidth: string;

@@ -1,23 +1,24 @@
 <div 
     class="input-container"
+    style:width={width}
 >
     <button 
         id = 'text-field'
         placeholder = ''
-        style:outline = {theme?.themeMode === 'light' ? `${outlineWidth} solid ${textColor}` : 'none'}
         style:border = none
         style:border-radius = {borderRadius}
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
         style:min-width = {minWidth}
-        style:width={width}
+        style:width='100%'
         style:--Xl-border-color = {borderColor}
         style:--Xl-color = {primaryColor}
         style:--Xl-height = {height}
         style:--Xl-secondaryColor = {secondaryColor}
         style:--Xl-hoverBorderColor = {textColor}
         style:--Xl-textColor = {textColor}
+        style:--Xl-filter = {filter}
     >
         <slot name="content" />     <!-- Контент кнопки -->
     </button>
@@ -27,19 +28,20 @@
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../store/ColorThemeStore';
 
+    export let variant = 'volume';                       /* Тип кнопки */
     export let borderColor = '';                         /* Цвет обводки */
     export let borderRadius = '';                        /* Радиус скругления углов */
     export let fontSize = '16px';                        /* Размер шрифта */
     export let height = '';                              /* Высота поля */
     export let labelColor ='';                           /* Цвет надписи */
-    export let minWidth = '';
+    export let minWidth = '';                            /* Минимальная ширина */
     export let outlineWidth ='';                         /* Толщина обводки */
     export let paddingLeft = '';                         /* Отступ от левой границы до курсора */
     export let paddingRight = '';                        /* Отступ от правой границы */
     export let primaryColor = '';                        /* Основной цвет */
     export let secondaryColor = '';                      /* Вторичный цвет */
     export let textColor = '';                           /* Цвет текста */
-    export let width = '5rem';                           /* Ширина кнопки */
+    export let width = '15rem';                          /* Ширина кнопки */
 
     // Флаги для отслеживания, передал ли пользователь значение извне
     let isTextColorFromUser = textColor !== '';
@@ -47,6 +49,8 @@
     let isLabelColorFromUser = labelColor !== '';
     let isPrimaryColorFromUser = primaryColor !== '';
     let isSecondaryColorFromUser = primaryColor !== '';
+
+    let filter = '';
 
     let theme: IColorThemeStore | undefined;
 
@@ -60,6 +64,8 @@
         if (!isPrimaryColorFromUser) primaryColor = theme.colors.primary;
         if (!isSecondaryColorFromUser) secondaryColor = theme.colors.secondary;
         if (!isTextColorFromUser) textColor = theme.colors.text.primary;
+
+        filter = theme.controls.button.filter;
     });
 
     //Устанавливаем значения стилей после инициализации темы
@@ -79,7 +85,7 @@
         height: var(--Xl-height);
         color: var(--Xl-textColor);
         background-color: var(--Xl-color);
-        transition: outline-color var(--Xl-effectsTimeCode), background-color var(--Xl-effectsTimeCode);
+        transition: outline-color var(--Xl-effectsTimeCode), background-color var(--Xl-effectsTimeCode), filter var(--Xl-effectsTimeCode);
     }
 
     .input-container {
@@ -90,6 +96,6 @@
 
     button:hover {
         cursor: pointer;
-        background-color: var(--Xl-secondaryColor);
+        filter: var(--Xl-filter);
     }
 </style>
