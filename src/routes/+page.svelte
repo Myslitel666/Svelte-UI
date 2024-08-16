@@ -4,6 +4,7 @@
 	</div>
 	<div class='component'>
 		<Button>
+			CONTAINED
 		</Button>
 	</div>
 	<div class='component'>

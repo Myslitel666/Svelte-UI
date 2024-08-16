@@ -79,7 +79,7 @@
         if (!disabledborderWidth) disabledborderWidth = theme.border.disabled.width;
         if (!paddingLeft) paddingLeft = theme.controls.textField.padding;
         if (!paddingRight) paddingRight = paddingLeft;
-        if (!width) width = theme.controls.textField.minWidth;
+        if (!width) width = theme.controls.minWidth;
     }
 
 </script>

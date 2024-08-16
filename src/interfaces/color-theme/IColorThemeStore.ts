@@ -25,14 +25,13 @@ export interface IColorThemeStore {
     controls: {
         button: {
             padding: string;
-            minWidth: string;
             filter: string;
         };
         textField: {
-            minWidth: string;
             padding: string;
         };
         height: string;
+        minWidth: string;
     };
     disabled: {
         fill: string;

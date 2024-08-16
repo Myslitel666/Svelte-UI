@@ -31,15 +31,14 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
     },
     controls: {
         button: {
-            minWidth: '15rem',
             padding: '0.85rem',
             filter: $themeMode === 'light' ? 'brightness(108%)' : 'contrast(70%)',
         },
         textField: {
-            minWidth: '15rem',
             padding: '0.85rem',
         },
         height: '3rem',
+        minWidth: '15rem',
     },
     disabled: {
         fill: $themeMode === 'light' ? '#e2e2e2' : '#424242',

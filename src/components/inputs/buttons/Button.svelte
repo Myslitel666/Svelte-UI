@@ -20,7 +20,7 @@
         style:--Xl-textColor = {textColor}
         style:--Xl-filter = {filter}
     >
-        <slot name="content" />     <!-- Контент кнопки -->
+        <slot></slot> <!-- Слот для содержимого кнопки -->
     </button>
 </div>
 
@@ -75,14 +75,14 @@
         if (!outlineWidth) outlineWidth = theme.border.disabled.width;
         if (!paddingLeft) paddingLeft = theme.controls.textField.padding;
         if (!paddingRight) paddingRight = paddingLeft;
-        if (!minWidth) minWidth = theme.controls.textField.minWidth;
+        if (!minWidth) minWidth = theme.controls.minWidth;
     }
 
 </script>
 
 <style>
     button {
-        height: var(--Xl-height);
+        min-height: var(--Xl-height);
         color: var(--Xl-textColor);
         background-color: var(--Xl-color);
         transition: outline-color var(--Xl-effectsTimeCode), background-color var(--Xl-effectsTimeCode), filter var(--Xl-effectsTimeCode);
