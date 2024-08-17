@@ -20,3 +20,15 @@ body {
 	--Xl-background-color: var(--Xl-light-bg-color);
 	background-color: var(--Xl-background-color);
 }
+
+p {
+	margin: 0.2rem;
+}
+
+.dark p {
+	color: var(--Xl-light-bg-color);
+}
+
+.light p {
+	color: var(--Xl-dark-bg-color);
+}
