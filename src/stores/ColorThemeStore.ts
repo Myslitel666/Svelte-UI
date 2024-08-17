@@ -1,5 +1,6 @@
 import { writable, derived } from 'svelte/store';
 import { type IColorThemeStore } from '../interfaces/color-theme/IColorThemeStore';
+import { initialCSSVariables } from '../utils/InitialCSSVariables';
 
 // Начальный режим темы
 const themeMode = writable('light');
@@ -23,7 +24,7 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
     colors: {
         primary: $themeMode === 'light' ? '#5bb056' : '#f41c1c',
         secondary: $themeMode === 'light' ? '#d06bcc' : '#ff35f8',
-        background: $themeMode === 'light' ? 'white' : 'black',
+        background: $themeMode === 'light' ? 'white' : '#161616', 
         text: {
             primary: $themeMode === 'light' ? '#111' : '#fff',
             label: $themeMode === 'light' ? '#b3b3b3' : '#808080',
@@ -49,6 +50,7 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
         fontWeight: '100',
         letterSpacing: '-0.02rem'
     },
+    effectsTimeCode: '0.3s',
     themeMode: $themeMode, // добавляем режим темы, чтобы отслеживать его изменения
 }));
 
@@ -63,17 +65,14 @@ const getOppositeTheme = (theme: string) => {
 
 // Функция для переключения режима темы
 const toggleThemeMode = () => {
+    //Обновление значения themeMode
     themeMode.update(current => {
         const newTheme = getOppositeTheme(current);
         
-        // Удаляем текущую тему
-        document.body.classList.remove(current);
-        
-        // Добавляем новую тему
-        document.body.classList.add(newTheme);
-        
         return newTheme;
     });
+    //Обновление глобальных CSS-переменных
+    initialCSSVariables();
 };
 
 // Экспортируем все необходимые элементы

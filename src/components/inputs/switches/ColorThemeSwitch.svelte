@@ -9,7 +9,7 @@
 </div>
 
 <script lang='ts'>
-    import { toggleThemeMode } from '../../../store/ColorThemeStore';
+    import { toggleThemeMode } from '../../../stores/ColorThemeStore';
     import Switch from "./Switch.svelte";
     import ActiveIcon from '../../icons/Dark.svelte';
     import DisabledIcon from '../../icons/Light.svelte';

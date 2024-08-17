@@ -26,7 +26,7 @@
 
 <script lang='ts'>
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
-    import { themeStore } from '../../../store/ColorThemeStore';
+    import { themeStore } from '../../../stores/ColorThemeStore';
 
     export let variant = 'volume';                       /* Тип кнопки */
     export let borderColor = '';                         /* Цвет обводки */

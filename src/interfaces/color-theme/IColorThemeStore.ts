@@ -42,5 +42,6 @@ export interface IColorThemeStore {
         fontWeight: string;
         letterSpacing: string;
     };
+    effectsTimeCode: string;
     themeMode: string;
 }

@@ -14,7 +14,7 @@
 
 <script lang='ts'>
     import { type IColorThemeStore } from "../../interfaces/color-theme/IColorThemeStore";
-    import { themeStore } from '../../store/ColorThemeStore';
+    import { themeStore } from '../../stores/ColorThemeStore';
 
     export let fill: string = 'black';                                 
     export let size: string = '2rem';

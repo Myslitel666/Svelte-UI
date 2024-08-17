@@ -36,7 +36,7 @@
 
 <script lang='ts'>
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
-    import { themeStore } from '../../../store/ColorThemeStore';
+    import { themeStore } from '../../../stores/ColorThemeStore';
 
     export let activedborderWidth = '';                  /* Толщина обводки в активном состоянии */
     export let borderColor = '';                         /* Цвет обводки */

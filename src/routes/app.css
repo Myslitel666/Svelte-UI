@@ -5,30 +5,10 @@ body {
 	margin: 0;
 	transition: background-color var(--Xl-effectsTimeCode);
 	background-color: var(--Xl-background-color);
-	--Xl-dark-bg-color: #161616;
-	--Xl-light-bg-color: #fff;
-	--Xl-background-color: var(--Xl-light-bg-color);
-	--Xl-effectsTimeCode: 0.3s;
-}
-
-.dark {
-	--Xl-background-color: var(--Xl-dark-bg-color);
-	background-color: var(--Xl-background-color);
-}
-
-.light {
-	--Xl-background-color: var(--Xl-light-bg-color);
-	background-color: var(--Xl-background-color);
 }
 
 p {
-	margin: 0.2rem;
-}
-
-.dark p {
-	color: var(--Xl-light-bg-color);
-}
-
-.light p {
-	color: var(--Xl-dark-bg-color);
+	margin: 0rem;
+	margin-bottom: 0.2rem;
+	color: var(--Xl-text-color);
 }

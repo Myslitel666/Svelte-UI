@@ -31,7 +31,7 @@
 
 <script lang='ts'>
     import { type IColorThemeStore } from "../../../interfaces/color-theme/IColorThemeStore";
-    import { themeStore } from '../../../store/ColorThemeStore';
+    import { themeStore } from '../../../stores/ColorThemeStore';
 
     export let color = '';                                 /* Цвет переключателя */
     export let checked: boolean = false;                   /* начальное состояние переключателя */
