@@ -31,7 +31,7 @@ export interface IColorThemeStore {
             padding: string;
         };
         height: string;
-        minWidth: string;
+        width: string;
     };
     disabled: {
         fill: string;

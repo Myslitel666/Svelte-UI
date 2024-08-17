@@ -22,6 +22,6 @@
 	});
 
   onMount(() => {
-    initialCSSVariables(); // Применяем тему при старте приложения
+    initialCSSVariables(); // Применяем тему при запуске приложения
   });
 </script>

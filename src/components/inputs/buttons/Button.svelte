@@ -31,7 +31,7 @@
     export let variant = 'volume';                       /* Тип кнопки */
     export let borderColor = '';                         /* Цвет обводки */
     export let borderRadius = '';                        /* Радиус скругления углов */
-    export let fontSize = '16px';                        /* Размер шрифта */
+    export let fontSize = '';                            /* Размер шрифта */
     export let height = '';                              /* Высота поля */
     export let labelColor ='';                           /* Цвет надписи */
     export let minWidth = '';                            /* Минимальная ширина */
@@ -41,7 +41,7 @@
     export let primaryColor = '';                        /* Основной цвет */
     export let secondaryColor = '';                      /* Вторичный цвет */
     export let textColor = '';                           /* Цвет текста */
-    export let width = '15rem';                          /* Ширина кнопки */
+    export let width = '';                               /* Ширина кнопки */
 
     // Флаги для отслеживания, передал ли пользователь значение извне
     let isTextColorFromUser = textColor !== '';
@@ -75,14 +75,15 @@
         if (!outlineWidth) outlineWidth = theme.border.disabled.width;
         if (!paddingLeft) paddingLeft = theme.controls.textField.padding;
         if (!paddingRight) paddingRight = paddingLeft;
-        if (!minWidth) minWidth = theme.controls.minWidth;
+        if (!width) width = theme.controls.width;
+        if (!fontSize) fontSize = theme.typography.fontSize;
     }
 
 </script>
 
 <style>
     button {
-        min-height: var(--Xl-height);
+        height: var(--Xl-height);
         color: var(--Xl-textColor);
         background-color: var(--Xl-color);
         transition: outline-color var(--Xl-effectsTimeCode), background-color var(--Xl-effectsTimeCode), filter var(--Xl-effectsTimeCode);

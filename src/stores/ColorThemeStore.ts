@@ -39,7 +39,7 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
             padding: '0.85rem',
         },
         height: '3rem',
-        minWidth: '15rem',
+        width: '15rem',
     },
     disabled: {
         fill: $themeMode === 'light' ? '#e2e2e2' : '#424242',

@@ -42,7 +42,7 @@
     export let borderColor = '';                         /* Цвет обводки */
     export let borderRadius = '';                        /* Радиус скругления углов */
     export let disabledborderWidth = '';                 /* Толщина обводки в неактивном состоянии */
-    export let fontSize = '16px';                        /* Размер шрифта */
+    export let fontSize = '';                            /* Размер шрифта */
     export let height = '';                              /* Высота поля */
     export let label = 'Text Field'                      /* Надпись */
     export let labelColor ='';                           /* Цвет надписи */
@@ -79,7 +79,8 @@
         if (!disabledborderWidth) disabledborderWidth = theme.border.disabled.width;
         if (!paddingLeft) paddingLeft = theme.controls.textField.padding;
         if (!paddingRight) paddingRight = paddingLeft;
-        if (!width) width = theme.controls.minWidth;
+        if (!width) width = theme.controls.width;
+        if (!fontSize) fontSize = theme.typography.fontSize;
     }
 
 </script>
