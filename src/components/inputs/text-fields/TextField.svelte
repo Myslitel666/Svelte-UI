@@ -8,6 +8,7 @@
         autocomplete='off'
         placeholder = ''
         style:outline = none
+        style:background-color={backgroundColor}
         style:border-radius = {borderRadius}
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
@@ -38,7 +39,9 @@
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
 
+    export let variant = 'Outlined';                     /* Толщина обводки в активном состоянии */
     export let activedborderWidth = '';                  /* Толщина обводки в активном состоянии */
+    export let backgroundColor = '';                     /* Цвет заливки */
     export let borderColor = '';                         /* Цвет обводки */
     export let borderRadius = '';                        /* Радиус скругления углов */
     export let disabledborderWidth = '';                 /* Толщина обводки в неактивном состоянии */
@@ -53,8 +56,9 @@
     export let width = '';                               /* Ширина поля */
 
     // Флаги для отслеживания, передал ли пользователь значение извне
-    let isTextColorFromUser = textColor !== '';
+    let isBackgroundColorFromUser = backgroundColor !== '';
     let isBorderColorFromUser = borderColor !== '';
+    let isTextColorFromUser = textColor !== '';
     let isLabelColorFromUser = labelColor !== '';
     let isPrimaryColorFromUser = primaryColor !== '';
 
@@ -65,6 +69,7 @@
         theme = value; //Инициализация объекта темы
 
         // Устанавливаем значения цветов при смене темы
+        if (!isBackgroundColorFromUser) backgroundColor = variant === 'Filled' ? theme.disabled.fill : theme.colors.background;
         if (!isBorderColorFromUser) borderColor = theme.border.disabled.color;
         if (!isLabelColorFromUser) labelColor = theme.colors.text.label;
         if (!isPrimaryColorFromUser) primaryColor = theme.colors.primary;
@@ -94,7 +99,8 @@
         border-style: solid;
         border-width: var(--Xl-disabledborderWidth);
         transition: border-color var(--Xl-effectsTimeCode), background-color var(--Xl-effectsTimeCode);
-
+        background-color: var(--Xl-background-color);
+        
         box-sizing: border-box; /* Включаем border и padding в размеры элемента */
     }
 

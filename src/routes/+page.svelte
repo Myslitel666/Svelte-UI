@@ -1,25 +1,27 @@
-<div id = 'page'>
-	<div>
-		<p>Text Field</p>
-		<TextField />
-	</div>
-	<div class='component'>
-		<p>Button</p>
-		<Button>
-			CONTAINED
-		</Button>
-	</div>
-	<div class='component'>
-		<p>Switch</p>
-		<Switch />
-	</div>
-	<div class='component'>
-		<p>Color Theme Switch</p>
-		<ColorThemeSwitch />
-	</div>
-	<div class='component'>
-		<p>AutoComplete</p>
-		<AutoComplete options={['Apple', 'Orange', 'Banana', 'Grape', 'Mango']} />
+<div id = 'container'>
+	<div id = 'page'>
+		<div>
+			<p>Text Field</p>
+			<TextField variant = 'Filled'/>
+		</div>
+		<div class='component'>
+			<p>Button</p>
+			<Button>
+				CONTAINED
+			</Button>
+		</div>
+		<div class='component'>
+			<p>Switch</p>
+			<Switch />
+		</div>
+		<div class='component'>
+			<p>Color Theme Switch</p>
+			<ColorThemeSwitch />
+		</div>
+		<div class='component'>
+			<p>Auto Complete</p>
+			<AutoComplete options={['Apple', 'Orange', 'Banana', 'Grape', 'Mango']} />
+		</div>
 	</div>
 </div>
 
@@ -33,10 +35,13 @@
 
 <style>
 	.component {
-		margin-top: 0.5rem;
+		margin-top: 0.35rem;
 	}
 
-	#page {
-		padding: 0.5rem;
+	#container {
+		display: flex;
+		justify-content: center; /* Горизонтальное центрирование */
+		align-items: center; /* Вертикальное центрирование */
+		min-height: 100vh; /* Минимальная высота экрана */
 	}
 </style>

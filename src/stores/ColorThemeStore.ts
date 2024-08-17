@@ -1,6 +1,6 @@
 import { writable, derived } from 'svelte/store';
 import { type IColorThemeStore } from '../interfaces/color-theme/IColorThemeStore';
-import { initialCSSVariables } from '../utils/InitialCSSVariables';
+import { initialCSSVariables } from '../utils/initialCSSVariables';
 
 // Начальный режим темы
 const themeMode = writable('light');
