@@ -34,7 +34,7 @@
         style:--Xl-color = {primaryColor}
         style:--Xl-font-size = {fontSize}
         style:--Xl-labelColor = {labelColor}
-        style:--Xl-liftingHeight = {variant === 'Outlined' ? `${height}/2` : variant === 'Standard' ? `${height}/2 + 0.45rem` : `${height}/2 + 0.78rem`}
+        style:--Xl-liftingHeight = {variant === 'Outlined' ? `${height}/2` : variant === 'Standard' ? `${height}/2 + 0.45rem` : `${height}/2 + 0.74rem`}
     >
         {label}
     </label>
