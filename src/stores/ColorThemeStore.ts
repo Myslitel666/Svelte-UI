@@ -17,6 +17,7 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
             width: '1px',
         },
         active: {
+            color:  $themeMode === 'light' ? '#959595' : '#a0a0a0',
             width: '2px',
         },
         borderRadius: '4px',

@@ -8,7 +8,6 @@
         autocomplete='off'
         placeholder = ''
         style:outline = none
-        style:background-color={backgroundColor}
         style:border-radius = {borderRadius}
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
@@ -17,11 +16,13 @@
         style:border-left={variant !== 'Outlined' ? 'none' : ''}
         style:border-right={variant !== 'Outlined' ? 'none' : ''}
         style:border-top={variant !== 'Outlined' ? 'none' : ''}
+        style:--Xl-background-color = {backgroundColor}
         style:--Xl-border-color = {borderColor}
         style:--Xl-color = {primaryColor}
         style:--Xl-height = {height}
         style:--Xl-activeborderWidth = {activedborderWidth}
         style:--Xl-disabledborderWidth = {disabledborderWidth}
+        style:--Xl-fill = {fill}
         style:--Xl-hoverBorderColor = {textColor}
         style:--Xl-textColor = {textColor}
     />
@@ -65,6 +66,9 @@
     let isLabelColorFromUser = labelColor !== '';
     let isPrimaryColorFromUser = primaryColor !== '';
 
+    //Стили из контекста темы
+    let fill = backgroundColor;
+
     let theme: IColorThemeStore | undefined;
 
     // Подписываемся на изменения темы
@@ -73,10 +77,11 @@
 
         // Устанавливаем значения цветов при смене темы
         if (!isBackgroundColorFromUser) backgroundColor = variant === 'Filled' ? theme.disabled.touch : theme.colors.background;
-        if (!isBorderColorFromUser) borderColor = theme.border.disabled.color;
+        if (!isBorderColorFromUser) borderColor = variant === 'Filled' ? theme.border.active.color : theme.border.disabled.color;
         if (!isLabelColorFromUser) labelColor = theme.colors.text.label;
         if (!isPrimaryColorFromUser) primaryColor = theme.colors.primary;
         if (!isTextColorFromUser) textColor = theme.colors.text.primary;
+        if (!isBackgroundColorFromUser) fill = variant === 'Filled' ? theme.disabled.fill : '';
     });
 
     //Устанавливаем значения стилей после инициализации темы с проверкой не передавал ли пользователь в компонент свои значения стилей
@@ -102,7 +107,6 @@
         border-style: solid;
         border-width: var(--Xl-disabledborderWidth);
         transition: border-color var(--Xl-effectsTimeCode), background-color var(--Xl-effectsTimeCode);
-        background-color: var(--Xl-background-color);
         
         box-sizing: border-box; /* Включаем border и padding в размеры элемента */
     }
@@ -121,10 +125,12 @@
     }
 
     input:hover {
+        background-color: var(--Xl-fill);
         border-color: var(--Xl-hoverBorderColor);
     }
 
     input:focus {
+        background-color: var(--Xl-background-color);
         border-color: var(--Xl-color);
         border-width: var(--Xl-activeborderWidth);
     }

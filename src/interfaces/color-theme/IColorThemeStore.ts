@@ -9,6 +9,7 @@ export interface IColorThemeStore {
             width: string;
         };
         active: {
+            color: string;
             width: string;
         };
         borderRadius: string;
