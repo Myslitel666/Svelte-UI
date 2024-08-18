@@ -9,13 +9,15 @@
         placeholder = ''
         style:outline = none
         style:border-radius = {borderRadius}
+        style:border-bottom-left-radius = {variant !== 'Outlined' ? 0 : ''}
+        style:border-bottom-right-radius = {variant !== 'Outlined' ? 0 : ''}
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
         style:font-width = 0.5rem
-        style:border-left={variant !== 'Outlined' ? 'none' : ''}
-        style:border-right={variant !== 'Outlined' ? 'none' : ''}
-        style:border-top={variant !== 'Outlined' ? 'none' : ''}
+        style:border-left = {variant !== 'Outlined' ? 'none' : ''}
+        style:border-right = {variant !== 'Outlined' ? 'none' : ''}
+        style:border-top = {variant !== 'Outlined' ? 'none' : ''}
         style:--Xl-background-color = {backgroundColor}
         style:--Xl-border-color = {borderColor}
         style:--Xl-color = {primaryColor}
