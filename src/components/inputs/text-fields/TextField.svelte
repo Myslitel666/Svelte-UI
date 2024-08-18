@@ -44,7 +44,7 @@
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
 
-    export let variant = 'Outlined';                          /* Толщина обводки в активном состоянии */
+    export let variant: 'Outlined' | 'Filled' | 'Standard' = 'Outlined';
     export let activedborderWidth = '';                       /* Толщина обводки в активном состоянии */
     export let backgroundColor = '';                          /* Цвет заливки */
     export let borderColor = '';                              /* Цвет обводки */
