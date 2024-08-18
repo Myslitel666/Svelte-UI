@@ -14,6 +14,9 @@
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
         style:font-width = 0.5rem
+        style:border-left={variant !== 'Outlined' ? 'none' : ''}
+        style:border-right={variant !== 'Outlined' ? 'none' : ''}
+        style:border-top={variant !== 'Outlined' ? 'none' : ''}
         style:--Xl-border-color = {borderColor}
         style:--Xl-color = {primaryColor}
         style:--Xl-height = {height}
@@ -39,21 +42,21 @@
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
 
-    export let variant = 'Outlined';                     /* Толщина обводки в активном состоянии */
-    export let activedborderWidth = '';                  /* Толщина обводки в активном состоянии */
-    export let backgroundColor = '';                     /* Цвет заливки */
-    export let borderColor = '';                         /* Цвет обводки */
-    export let borderRadius = '';                        /* Радиус скругления углов */
-    export let disabledborderWidth = '';                 /* Толщина обводки в неактивном состоянии */
-    export let fontSize = '';                            /* Размер шрифта */
-    export let height = '';                              /* Высота поля */
-    export let label = 'Text Field'                      /* Надпись */
-    export let labelColor ='';                           /* Цвет надписи */
-    export let paddingLeft = '';                         /* Отступ от левой границы до курсора */
-    export let paddingRight = '';                        /* Отступ от правой границы */
-    export let primaryColor = '';                        /* Основной цвет */
-    export let textColor = '';                           /* Цвет текста */
-    export let width = '';                               /* Ширина поля */
+    export let variant = 'Outlined';                          /* Толщина обводки в активном состоянии */
+    export let activedborderWidth = '';                       /* Толщина обводки в активном состоянии */
+    export let backgroundColor = '';                          /* Цвет заливки */
+    export let borderColor = '';                              /* Цвет обводки */
+    export let borderRadius = '';                             /* Радиус скругления углов */
+    export let disabledborderWidth = '';                      /* Толщина обводки в неактивном состоянии */
+    export let fontSize = '';                                 /* Размер шрифта */
+    export let height = '';                                   /* Высота поля */
+    export let label = 'Text Field'                           /* Надпись */
+    export let labelColor ='';                                /* Цвет надписи */
+    export let paddingLeft = '';                              /* Отступ от левой границы до курсора */
+    export let paddingRight = '';                             /* Отступ от правой границы */
+    export let primaryColor = '';                             /* Основной цвет */
+    export let textColor = '';                                /* Цвет текста */
+    export let width = '';                                    /* Ширина поля */
 
     // Флаги для отслеживания, передал ли пользователь значение извне
     let isBackgroundColorFromUser = backgroundColor !== '';
@@ -69,7 +72,7 @@
         theme = value; //Инициализация объекта темы
 
         // Устанавливаем значения цветов при смене темы
-        if (!isBackgroundColorFromUser) backgroundColor = variant === 'Filled' ? theme.disabled.fill : theme.colors.background;
+        if (!isBackgroundColorFromUser) backgroundColor = variant === 'Filled' ? theme.disabled.touch : theme.colors.background;
         if (!isBorderColorFromUser) borderColor = theme.border.disabled.color;
         if (!isLabelColorFromUser) labelColor = theme.colors.text.label;
         if (!isPrimaryColorFromUser) primaryColor = theme.colors.primary;

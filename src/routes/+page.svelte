@@ -1,8 +1,15 @@
 <div id = 'container'>
 	<div id = 'page'>
-		<div>
-			<p>Text Field</p>
-			<TextField variant = 'Filled'/>
+		<p>Text Field</p>
+		<div class="components-container">
+			<TextField 
+				variant = 'Outlined'
+				label = 'Outlined'
+			/>
+			<TextField 
+				variant = 'Filled'
+				label = 'Filled'
+			/>
 		</div>
 		<div class='component'>
 			<p>Button</p>
@@ -36,6 +43,12 @@
 <style>
 	.component {
 		margin-top: 0.35rem;
+	}
+
+	.components-container {
+		display: flex; /* Располагает дочерние элементы в строку */
+		gap: 1rem; /* Задает отступ между элементами */
+		align-items: center; /* Вертикальное выравнивание по центру */
 	}
 
 	#container {
