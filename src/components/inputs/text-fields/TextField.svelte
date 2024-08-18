@@ -9,8 +9,6 @@
         placeholder = ''
         style:outline = none
         style:border-radius = {borderRadius}
-        style:border-bottom-left-radius = {variant !== 'Outlined' ? 0 : ''}
-        style:border-bottom-right-radius = {variant !== 'Outlined' ? 0 : ''}
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
@@ -89,7 +87,7 @@
     //Устанавливаем значения стилей после инициализации темы с проверкой не передавал ли пользователь в компонент свои значения стилей
     if (theme) {
         if (!activedborderWidth) activedborderWidth = theme.border.active.width;
-        if (!borderRadius) borderRadius = theme.border.borderRadius;
+        if (!borderRadius) borderRadius = variant === 'Outlined' ? theme.border.borderRadius : `${theme.border.borderRadius} ${theme.border.borderRadius} 0 0`;
         if (!height) height = theme.controls.height;
         if (!disabledborderWidth) disabledborderWidth = theme.border.disabled.width;
         if (!paddingLeft) paddingLeft = theme.controls.textField.padding;
