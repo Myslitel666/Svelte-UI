@@ -1,6 +1,8 @@
 <div 
     class="input-container"
     style:width = {width}
+    style:--Xl-background-color = {backgroundColor}
+    style:--Xl-fill = {fill}
 >
     <input 
         id = 'text-field'
@@ -17,13 +19,11 @@
         style:border-left = {variant !== 'Outlined' ? 'none' : ''}
         style:border-right = {variant !== 'Outlined' ? 'none' : ''}
         style:border-top = {variant !== 'Outlined' ? 'none' : ''}
-        style:--Xl-background-color = {backgroundColor}
         style:--Xl-border-color = {borderColor}
         style:--Xl-color = {primaryColor}
         style:--Xl-height = {height}
         style:--Xl-activeborderWidth = {activedborderWidth}
         style:--Xl-disabledborderWidth = {disabledborderWidth}
-        style:--Xl-fill = {fill}
         style:--Xl-hoverBorderColor = {textColor}
         style:--Xl-textColor = {textColor}
     />
@@ -31,7 +31,6 @@
         for='text-field'
         style:position = 'absolute'
         style:margin-left = {paddingLeft}
-        style:--Xl-background-color = {backgroundColor}
         style:--Xl-color = {primaryColor}
         style:--Xl-font-size = {fontSize}
         style:--Xl-labelColor = {labelColor}
@@ -116,6 +115,7 @@
     }
 
     label {
+        background-color: var(--Xl-background-color);
         pointer-events: none; /* Нажатие на label не перекрывает не припятствует активации input */
         font-size: var(--Xl-font-size);
         color: var(--Xl-labelColor);
@@ -133,8 +133,11 @@
         border-color: var(--Xl-hoverBorderColor);
     }
 
+    input:hover + label {
+        background-color: var(--Xl-fill);
+    }
+
     input:focus {
-        background-color: var(--Xl-background-color);
         border-color: var(--Xl-color);
         border-width: var(--Xl-activeborderWidth);
     }
@@ -153,5 +156,9 @@
         background-color: var(--Xl-background-color);
         padding: 0 0.26rem 0 0.26rem;
         transition: all var(--Xl-effectsTimeCode);
+    }
+
+    input:focus, input:not(:placeholder-shown) {
+        background-color: var(--Xl-background-color);
     }
 </style>
