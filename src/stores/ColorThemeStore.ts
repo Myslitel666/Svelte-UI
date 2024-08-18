@@ -39,7 +39,7 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
         textField: {
             padding: '0.85rem',
         },
-        height: '3rem',
+        height: '3.15rem',
         width: '15rem',
     },
     disabled: {

@@ -11,6 +11,7 @@
         style:border-radius = {borderRadius}
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
+        style:padding-top = {paddingTop}
         style:font-size = {fontSize}
         style:font-width = 0.5rem
         style:border-left = {variant !== 'Outlined' ? 'none' : ''}
@@ -30,10 +31,11 @@
         for='text-field'
         style:position = 'absolute'
         style:margin-left = {paddingLeft}
+        style:--Xl-background-color = {backgroundColor}
         style:--Xl-color = {primaryColor}
         style:--Xl-font-size = {fontSize}
         style:--Xl-labelColor = {labelColor}
-        style:--Xl-liftingHeight = {height}
+        style:--Xl-liftingHeight = {variant === 'Outlined' ? `${height}/2` : `${height}/4`}
     >
         {label}
     </label>
@@ -55,6 +57,7 @@
     export let labelColor ='';                                /* Цвет надписи */
     export let paddingLeft = '';                              /* Отступ от левой границы до курсора */
     export let paddingRight = '';                             /* Отступ от правой границы */
+    export let paddingTop = '';                               /* Отступ от верхней границы */
     export let primaryColor = '';                             /* Основной цвет */
     export let textColor = '';                                /* Цвет текста */
     export let width = '';                                    /* Ширина поля */
@@ -91,7 +94,8 @@
         if (!height) height = theme.controls.height;
         if (!disabledborderWidth) disabledborderWidth = theme.border.disabled.width;
         if (!paddingLeft) paddingLeft = theme.controls.textField.padding;
-        if (!paddingRight) paddingRight = paddingLeft;
+        if (!paddingRight) paddingRight = theme.controls.textField.padding;
+        if (!paddingTop) paddingTop = variant === 'Filled' ? theme.controls.textField.padding : '0';
         if (!width) width = theme.controls.width;
         if (!fontSize) fontSize = theme.typography.fontSize;
     }
@@ -144,7 +148,7 @@
     }
 
     input:focus + label, input:not(:placeholder-shown) + label {
-        transform: translate(-0.26rem, calc(-1 * var(--Xl-liftingHeight)/2)); /* Сдвигаем метку влево и вверх */
+        transform: translate(-0.26rem, calc(-1 * var(--Xl-liftingHeight))); /* Сдвигаем метку влево и вверх */
         font-size: 13px; /* Уменьшаем размер шрифта */
         background-color: var(--Xl-background-color);
         padding: 0 0.26rem 0 0.26rem;
