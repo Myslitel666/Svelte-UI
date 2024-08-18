@@ -34,7 +34,7 @@
         style:--Xl-color = {primaryColor}
         style:--Xl-font-size = {fontSize}
         style:--Xl-labelColor = {labelColor}
-        style:--Xl-liftingHeight = {variant === 'Outlined' ? `${height}/2` : `${height}/4`}
+        style:--Xl-liftingHeight = {variant === 'Outlined' ? `${height}/2` : variant === 'Standard' ? `${height}/2 + 0.45rem` : `${height}/2 + 0.78rem`}
     >
         {label}
     </label>
@@ -92,9 +92,9 @@
         if (!borderRadius) borderRadius = variant === 'Outlined' ? theme.border.borderRadius : `${theme.border.borderRadius} ${theme.border.borderRadius} 0 0`;
         if (!height) height = theme.controls.height;
         if (!disabledborderWidth) disabledborderWidth = theme.border.disabled.width;
-        if (!paddingLeft) paddingLeft = theme.controls.textField.padding;
+        if (!paddingLeft) paddingLeft = variant === 'Standard' ? '0' : theme.controls.textField.padding;
         if (!paddingRight) paddingRight = theme.controls.textField.padding;
-        if (!paddingTop) paddingTop = variant === 'Filled' ? theme.controls.textField.padding : '0';
+        if (!paddingTop) paddingTop = variant !== 'Outlined' ? theme.controls.textField.padding : '0';
         if (!width) width = theme.controls.width;
         if (!fontSize) fontSize = theme.typography.fontSize;
     }

@@ -10,6 +10,10 @@
 				variant = 'Filled'
 				label = 'Filled'
 			/>
+			<TextField 
+				variant = 'Standard'
+				label = 'Standard'
+			/>
 		</div>
 		<div class='component'>
 			<p>Button</p>
