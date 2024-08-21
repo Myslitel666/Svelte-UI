@@ -26,6 +26,7 @@
         style:--Xl-disabledborderWidth = {disabledborderWidth}
         style:--Xl-hoverBorderColor = {textColor}
         style:--Xl-textColor = {textColor}
+        {...$$props}
     />
     <label 
         for='text-field'
@@ -44,6 +45,7 @@
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
 
+    // Свойства для управления CSS-стилями
     export let variant: 'Outlined' | 'Filled' | 'Standard' = 'Outlined';
     export let activedborderWidth = '';                       /* Толщина обводки в активном состоянии */
     export let backgroundColor = '';                          /* Цвет заливки */
@@ -60,6 +62,9 @@
     export let primaryColor = '';                             /* Основной цвет */
     export let textColor = '';                                /* Цвет текста */
     export let width = '';                                    /* Ширина поля */
+
+    // Функциональные свойства компонента
+    export let value: string = '';                            /* Значение текстового поля */
 
     // Флаги для отслеживания, передал ли пользователь значение извне
     let isBackgroundColorFromUser = backgroundColor !== '';
@@ -98,7 +103,6 @@
         if (!width) width = theme.controls.width;
         if (!fontSize) fontSize = theme.typography.fontSize;
     }
-
 </script>
 
 <style>

@@ -5,6 +5,9 @@
 			<TextField 
 				variant = 'Outlined'
 				label = 'Outlined'
+				value = 'Text'
+				onfocus={() => { console.log('Focus in component')}}
+				onblur={() => console.log('Input blurred')}
 			/>
 			<TextField 
 				variant = 'Filled'
@@ -15,22 +18,25 @@
 				label = 'Standard'
 			/>
 		</div>
-		<div class='component'>
-			<p>Button</p>
-			<Button>
+		<p class = 'heading'>Button</p>
+		<div class="components-container">
+			<Button variant = 'Contained'>
 				CONTAINED
 			</Button>
+			<Button variant = 'Outlined'>
+				OUTLINED
+			</Button>
 		</div>
-		<div class='component'>
-			<p>Switch</p>
+		<p class='heading'>Switch</p>
+		<div>
 			<Switch />
 		</div>
-		<div class='component'>
-			<p>Color Theme Switch</p>
+		<p class='heading'>Color Theme Switch</p>
+		<div>
 			<ColorThemeSwitch />
 		</div>
-		<div class='component'>
-			<p>Auto Complete</p>
+		<p class='heading'>Auto Complete</p>
+		<div>
 			<AutoComplete options={['Apple', 'Orange', 'Banana', 'Grape', 'Mango']} />
 		</div>
 	</div>
@@ -45,7 +51,7 @@
 </script>
 
 <style>
-	.component {
+	.heading {
 		margin-top: 0.35rem;
 	}
 

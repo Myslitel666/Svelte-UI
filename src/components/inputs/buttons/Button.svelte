@@ -5,15 +5,14 @@
     <button 
         id = 'text-field'
         placeholder = ''
-        style:border = none
+        style:border = {variant === 'Outlined' ? `1px solid ${primaryColor}` : 'none'}
         style:border-radius = {borderRadius}
         style:padding-left = {paddingLeft}
         style:padding-right = {paddingRight}
         style:font-size = {fontSize}
         style:min-width = {minWidth}
         style:width='100%'
-        style:--Xl-border-color = {borderColor}
-        style:--Xl-color = {primaryColor}
+        style:--Xl-color = {variant === 'Contained' ? primaryColor : ''}
         style:--Xl-height = {height}
         style:--Xl-secondaryColor = {secondaryColor}
         style:--Xl-hoverBorderColor = {textColor}
@@ -28,7 +27,7 @@
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
 
-    export let variant = 'volume';                       /* Тип кнопки */
+    export let variant = 'Contained';                    /* Тип кнопки */
     export let borderColor = '';                         /* Цвет обводки */
     export let borderRadius = '';                        /* Радиус скругления углов */
     export let fontSize = '';                            /* Размер шрифта */
@@ -63,7 +62,7 @@
         if (!isLabelColorFromUser) labelColor = theme.colors.text.label;
         if (!isPrimaryColorFromUser) primaryColor = theme.colors.primary;
         if (!isSecondaryColorFromUser) secondaryColor = theme.colors.secondary;
-        if (!isTextColorFromUser) textColor = theme.colors.text.primary;
+        if (!isTextColorFromUser) textColor = variant === 'Contained' ? theme.colors.text.primary : theme.colors.primary;
 
         filter = theme.controls.button.filter;
     });
