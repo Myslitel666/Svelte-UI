@@ -43,6 +43,7 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
         width: '15rem',
     },
     disabled: {
+        expressed: $themeMode === 'light' ? '#929292' : '#c2c2c2',
         fill: $themeMode === 'light' ? '#e2e2e2' : '#424242',
         touch: $themeMode === 'light' ? '#efefef' : '#2c2c2c',
     },

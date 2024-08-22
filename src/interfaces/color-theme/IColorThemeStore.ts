@@ -35,6 +35,7 @@ export interface IColorThemeStore {
         width: string;
     };
     disabled: {
+        expressed: string;
         fill: string;
         touch: string;
     };

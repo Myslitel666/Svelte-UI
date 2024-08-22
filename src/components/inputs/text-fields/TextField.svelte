@@ -63,9 +63,6 @@
     export let textColor = '';                                /* Цвет текста */
     export let width = '';                                    /* Ширина поля */
 
-    // Функциональные свойства компонента
-    export let value: string = '';                            /* Значение текстового поля */
-
     // Флаги для отслеживания, передал ли пользователь значение извне
     let isBackgroundColorFromUser = backgroundColor !== '';
     let isBorderColorFromUser = borderColor !== '';
