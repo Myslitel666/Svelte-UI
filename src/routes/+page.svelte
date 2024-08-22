@@ -8,6 +8,10 @@
 				value = 'Text'
 				onfocus={() => { console.log('Focus in component')}}
 				onblur={() => console.log('Input blurred')}
+				oninput={(e: Event) => {
+					const target = e.target as HTMLInputElement;
+					console.log(target.value)
+				}}
 			/>
 			<TextField 
 				variant = 'Filled'
@@ -42,7 +46,7 @@
 	</div>
 </div>
 
-<script>
+<script lang="ts">
 	import TextField from '../components/inputs/text-fields/TextField.svelte';
 	import Switch from '../components/inputs/switches/Switch.svelte';
 	import ColorThemeSwitch from '../components/inputs/switches/ColorThemeSwitch.svelte';
