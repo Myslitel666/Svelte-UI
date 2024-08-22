@@ -4,7 +4,7 @@
 >
 	<svg 
 		fill = {fill !== '' ? fill : theme.disabled.expressed} 
-		viewBox='0 -1 25 25' 
+		viewBox='0 -3 25 25' 
 	>
 		<path d='M6.5,8.5l6,7l6-7H6.5z'/>
 	</svg>
@@ -25,3 +25,9 @@
         theme = value;
     });
 </script>
+
+<style>
+	div:hover {
+		cursor: pointer;
+	}
+</style>

@@ -1,16 +1,14 @@
-<div 
-    class="input-container"
-    style:width = {width}
->
+<div class="input-container" style:width={width}>
     <TextField 
-        {label}
-        width = '100%'
+        label={label}
+        width="100%"
     />
-
+    <div class="triangle-icon">
+        <Triangle 
+            size="1.25rem" 
+        />
+    </div>
 </div>
-<Triangle 
-    size = 1.5rem
-/>
 
 <script lang='ts'>
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
@@ -43,5 +41,15 @@
 </script>
 
 <style>
+    .input-container {
+        position: relative;
+    }
 
+    .triangle-icon {
+        position: absolute;
+        right: 0.53rem;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none; /* Наведение мыши на стрелку не препятствует затемнению обводки поля */
+    }
 </style>
