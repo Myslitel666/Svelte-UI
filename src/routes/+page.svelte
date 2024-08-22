@@ -9,8 +9,7 @@
 				onfocus={() => { console.log('Focus in component')}}
 				onblur={() => console.log('Input blurred')}
 				oninput={(e: Event) => {
-					const target = e.target as HTMLInputElement;
-					console.log(target.value)
+					console.log(getInputValue(e));
 				}}
 			/>
 			<TextField 
@@ -52,6 +51,7 @@
 	import ColorThemeSwitch from '../components/inputs/switches/ColorThemeSwitch.svelte';
 	import Button from '../components/inputs/buttons/Button.svelte';
 	import AutoComplete from '../components/inputs/auto-complete/AutoComplete.svelte';
+	import { getInputValue } from '../utils/valueExtractors';
 </script>
 
 <style>
