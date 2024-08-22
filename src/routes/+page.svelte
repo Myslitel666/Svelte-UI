@@ -5,11 +5,10 @@
 			<TextField 
 				variant = 'Outlined'
 				label = 'Outlined'
-				value = 'Text'
-				onfocus={() => { console.log('Focus in component')}}
-				onblur={() => console.log('Input blurred')}
+				onfocus={() => {}}
+				onblur={() => {}}
 				oninput={(e: Event) => {
-					console.log(extractors.getInputValue(e));
+					let value = extractors.getInputValue(e);
 				}}
 			/>
 			<TextField 
