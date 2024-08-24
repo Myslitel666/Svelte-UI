@@ -3,7 +3,7 @@
     style:width={width}
 >
     <button 
-        id = {uniqueId}
+        id = {id}
         placeholder = ''
         style:border = {variant === 'Outlined' ? `1px solid ${primaryColor}` : 'none'}
         style:border-radius = {borderRadius}
@@ -30,6 +30,7 @@
     import { generateIdElement } from '../../../utils/elementIdUtils';
 
     export let variant = 'Contained';                    /* Тип кнопки */
+    export let id = ''                                   /* Уникальный идентификатор элемента */
     export let borderColor = '';                         /* Цвет обводки */
     export let borderRadius = '';                        /* Радиус скругления углов */
     export let fontSize = '';                            /* Размер шрифта */
@@ -80,9 +81,8 @@
         if (!fontSize) fontSize = theme.typography.fontSize;
     }
 
-    let uniqueId = ''
     onMount(() => {
-        uniqueId = `button-${generateIdElement()}`;
+        id ? '' : id = `text-field-${generateIdElement()}`;
     });
 </script>
 

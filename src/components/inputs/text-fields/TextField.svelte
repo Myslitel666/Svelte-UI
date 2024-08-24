@@ -5,13 +5,9 @@
     style:width = {width}
     style:--Xl-background-color = {backgroundColor}
     style:--Xl-fill = {fill}
-    on:mouseover={handleMouseOver}
-    on:mouseout={handleMouseOut}
-    on:focus={handleFocus}
-    on:blur={handleBlur}
 >
     <input 
-        id = {uniqueId}
+        id = {id}
         type = 'text'
         autocomplete='off'
         placeholder = ''
@@ -33,6 +29,10 @@
         style:--Xl-hoverBorderColor = {textColor}
         style:--Xl-textColor = {textColor}
         {...$$props}
+        on:mouseover={handleMouseOver}
+        on:mouseout={handleMouseOut}
+        on:focus={handleFocus}
+        on:blur={handleBlur}
     />
     <label 
         for='text-field'
@@ -51,11 +51,12 @@
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
     import { generateIdElement } from '../../../utils/elementIdUtils';
-    import * as extractors from '../../../utils/valueExtractors';
     import { onMount } from 'svelte';
+    import * as extractors from '../../../utils/valueExtractors';
 
     // Свойства для управления CSS-стилями
     export let variant: 'Outlined' | 'Filled' | 'Standard' = 'Outlined';
+    export let id = ''                                        /* Уникальный идентификатор элемента */
     export let activedborderWidth = '';                       /* Толщина обводки в активном состоянии */
     export let backgroundColor = '';                          /* Цвет заливки */
     export let borderColor = '';                              /* Цвет обводки */
@@ -110,28 +111,27 @@
         if (!fontSize) fontSize = theme.typography.fontSize;
     }
 
-    let uniqueId = ''
     onMount(() => {
-        uniqueId = `text-field-${generateIdElement()}`;
+        id ? '' : id = `text-field-${generateIdElement()}`;
     });
 
     function handleMouseOver() {
-        const inputElement = extractors.getElementById(uniqueId);
+        const inputElement = extractors.getElementById(id);
         inputElement.classList.add('hovered');
     }
 
     function handleMouseOut() {
-        const inputElement = extractors.getElementById(uniqueId);
+        const inputElement = extractors.getElementById(id);
         inputElement.classList.remove('hovered');
     }
 
     function handleFocus() {
-        const inputElement = extractors.getElementById(uniqueId);
+        const inputElement = extractors.getElementById(id);
         inputElement.classList.add('focused');
     }
 
     function handleBlur() {
-        const inputElement = extractors.getElementById(uniqueId);
+        const inputElement = extractors.getElementById(id);
         inputElement.classList.remove('focused');
     }
 </script>
@@ -163,7 +163,7 @@
         flex-direction: column;
     }
 
-    input:hover {
+    .hovered {
         background-color: var(--Xl-fill);
         border-color: var(--Xl-hoverBorderColor);
     }
@@ -172,13 +172,9 @@
         background-color: var(--Xl-fill);
     }
 
-    input:focus {
+    .focused {
         border-color: var(--Xl-color);
         border-width: var(--Xl-activeborderWidth);
-    }
-
-    label:hover {
-        cursor: text;
     }
 
     input:focus + label {

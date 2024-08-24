@@ -20,7 +20,7 @@
     </span>
     <input
         type="checkbox"
-        id = {uniqueId}
+        id = {id}
         style:height = {height}
         bind:checked 
         on:click={()=> {
@@ -37,6 +37,7 @@
     import { generateIdElement } from "../../../utils/elementIdUtils";
 
     export let color = '';                                 /* Цвет переключателя */
+    export let id = ''                                        /* Уникальный идентификатор элемента */
     export let checked: boolean = false;                   /* начальное состояние переключателя */
     export let onClick = () => {};                         /* Обработчик нажатия */
 
@@ -59,9 +60,8 @@
         if (!isColorFromUser) color = theme.colors.primary;
     });
 
-    let uniqueId = ''
     onMount(() => {
-        uniqueId = `switch-${generateIdElement()}`;
+        id ? '' : id = `text-field-${generateIdElement()}`;
     });
 </script>
 
