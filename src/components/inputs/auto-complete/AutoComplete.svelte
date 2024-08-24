@@ -32,11 +32,12 @@
             {...$$props}
             on:mouseover={handleMouseOver}
             on:mouseout={handleMouseOut}
+            on:mousedown = {toggleOpen}
             on:focus={handleFocus}
             on:blur={handleBlur}
         />
         <label 
-            for='text-field'
+            for={id}
             style:position = 'absolute'
             style:margin-left = {paddingLeft}
             style:--Xl-color = {primaryColor}
@@ -48,16 +49,27 @@
         </label>
     </div>
     <button 
-        class = "triangle-icon empty"
-        on:mouseover={handleMouseOver}
-        on:mouseout={handleMouseOut}
-        on:focus={handleFocus}
-        on:blur={handleBlur}
-        style:transform={isOpen ? 'rotate(180deg) translateY(50%)' : ''}
-        style:transition='transform var(--Xl-effectsTimeCode)'
+        class = "triangle-icon"
+        on:mouseover = {() => {
+            handleMouseOver();
+            triangleHover = !triangleHover;
+        }}
+        on:mouseout = {() => {
+            handleMouseOut();
+            triangleHover = !triangleHover;
+        }}
+        on:mousedown = {toggleOpen}
+        on:focus = {handleFocus}
+        on:blur = {handleBlur}
+        style:width=1.75rem
+        style:height=1.75rem
+        style:border-radius='50%' 
+        style:transform = {isOpen ? 'rotate(180deg) translateY(50%)' : ''}
+        style:transition = 'transform var(--Xl-effectsTimeCode)'
+        style:background-color = {triangleHover ? theme?.disabled.touch : ''}
     >
         <Triangle 
-            size="1.25rem" 
+            size=1.25rem 
         />
     </button>
 </div>
@@ -99,6 +111,7 @@
 
     //Стили из контекста темы
     let fill = backgroundColor;
+    let triangleHover = false;
 
     let theme: IColorThemeStore | undefined;
 
@@ -129,7 +142,7 @@
     }
 
     onMount(() => {
-        id ? '' : id = `text-field-${generateIdElement()}`;
+        id ? '' : id = `auto-complete-${generateIdElement()}`;
     });
 
     function handleMouseOver() {
@@ -145,13 +158,12 @@
     function handleFocus() {
         const inputElement = extractors.getElementById(id);
         inputElement.classList.add('focused');
-        toggleOpen();
     }
 
     function handleBlur() {
         const inputElement = extractors.getElementById(id);
         inputElement.classList.remove('focused');
-        toggleOpen();
+        isOpen ? toggleOpen() : '';
     }
 
     // Функция для переключения состояния компонента (открыт/закрыт)
