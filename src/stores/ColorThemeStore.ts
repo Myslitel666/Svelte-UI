@@ -44,8 +44,9 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
     },
     disabled: {
         expressed: $themeMode === 'light' ? '#757575' : '#e0e0e0',
-        fill: $themeMode === 'light' ? '#e2e2e2' : '#424242',
-        touch: $themeMode === 'light' ? '#efefef' : '#2c2c2c',
+        fill: $themeMode === 'light' ? '#e5e5e5' : '#4a4a4a',
+        touch: $themeMode === 'light' ? '#efefef' : '#2f2f2f',
+        ghost: $themeMode === 'light' ? '#f5f5f5' : '#2c2c2c',
     },
     typography: {
         font: 'Century Gothic',

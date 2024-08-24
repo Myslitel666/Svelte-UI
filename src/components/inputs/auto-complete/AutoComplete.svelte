@@ -66,7 +66,7 @@
         style:border-radius='50%' 
         style:transform = {isOpen ? 'rotate(180deg) translateY(50%)' : ''}
         style:transition = 'transform var(--Xl-effectsTimeCode)'
-        style:background-color = {triangleHover ? theme?.disabled.touch : ''}
+        style:background-color = {triangleHover ? theme?.disabled.ghost : ''}
     >
         <Triangle 
             size=1.25rem 
