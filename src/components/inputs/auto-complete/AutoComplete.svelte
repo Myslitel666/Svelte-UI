@@ -68,8 +68,8 @@
         style:transition = 'transform var(--Xl-effectsTimeCode)'
         style:background-color = {triangleHover ? theme?.disabled.ghost : ''}
     >
-        <Triangle 
-            size=1.25rem 
+        <Arrow 
+            size=1.16rem 
         />
     </button>
 </div>
@@ -79,7 +79,7 @@
     import { themeStore } from '../../../stores/ColorThemeStore';
     import { generateIdElement } from '../../../utils/elementIdUtils';
     import { onMount } from 'svelte';
-    import Triangle from '../../icons/Triangle.svelte';
+    import Arrow from '../../icons/TriangularArrowDown.svelte';
     import * as extractors from '../../../utils/valueExtractors';
 
     // Свойства для управления CSS-стилями
