@@ -20,6 +20,7 @@
     </span>
     <input
         type="checkbox"
+        id = {uniqueId}
         style:height = {height}
         bind:checked 
         on:click={()=> {
@@ -32,6 +33,8 @@
 <script lang='ts'>
     import { type IColorThemeStore } from "../../../interfaces/color-theme/IColorThemeStore";
     import { themeStore } from '../../../stores/ColorThemeStore';
+    import { onMount } from "svelte";
+    import { generateIdElement } from "../../../utils/elementIdUtils";
 
     export let color = '';                                 /* Цвет переключателя */
     export let checked: boolean = false;                   /* начальное состояние переключателя */
@@ -54,6 +57,11 @@
         theme = value;
 
         if (!isColorFromUser) color = theme.colors.primary;
+    });
+
+    let uniqueId = ''
+    onMount(() => {
+        uniqueId = `switch-${generateIdElement()}`;
     });
 </script>
 

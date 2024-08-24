@@ -3,7 +3,7 @@
     style:width={width}
 >
     <button 
-        id = 'text-field'
+        id = {uniqueId}
         placeholder = ''
         style:border = {variant === 'Outlined' ? `1px solid ${primaryColor}` : 'none'}
         style:border-radius = {borderRadius}
@@ -26,6 +26,8 @@
 <script lang='ts'>
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
+    import { onMount } from 'svelte';
+    import { generateIdElement } from '../../../utils/elementIdUtils';
 
     export let variant = 'Contained';                    /* Тип кнопки */
     export let borderColor = '';                         /* Цвет обводки */
@@ -78,6 +80,10 @@
         if (!fontSize) fontSize = theme.typography.fontSize;
     }
 
+    let uniqueId = ''
+    onMount(() => {
+        uniqueId = `button-${generateIdElement()}`;
+    });
 </script>
 
 <style>

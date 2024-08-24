@@ -1,11 +1,17 @@
 <div 
+    role="button"
+    tabindex="0"
     class="input-container"
     style:width = {width}
     style:--Xl-background-color = {backgroundColor}
     style:--Xl-fill = {fill}
+    on:mouseover={handleMouseOver}
+    on:mouseout={handleMouseOut}
+    on:focus={handleFocus}
+    on:blur={handleBlur}
 >
     <input 
-        id = 'text-field'
+        id = {uniqueId}
         type = 'text'
         autocomplete='off'
         placeholder = ''
@@ -44,6 +50,9 @@
 <script lang='ts'>
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
+    import { generateIdElement } from '../../../utils/elementIdUtils';
+    import * as extractors from '../../../utils/valueExtractors';
+    import { onMount } from 'svelte';
 
     // Свойства для управления CSS-стилями
     export let variant: 'Outlined' | 'Filled' | 'Standard' = 'Outlined';
@@ -99,6 +108,31 @@
         if (!paddingTop) paddingTop = variant !== 'Outlined' ? theme.controls.textField.padding : '0';
         if (!width) width = theme.controls.width;
         if (!fontSize) fontSize = theme.typography.fontSize;
+    }
+
+    let uniqueId = ''
+    onMount(() => {
+        uniqueId = `text-field-${generateIdElement()}`;
+    });
+
+    function handleMouseOver() {
+        const inputElement = extractors.getElementById(uniqueId);
+        inputElement.classList.add('hovered');
+    }
+
+    function handleMouseOut() {
+        const inputElement = extractors.getElementById(uniqueId);
+        inputElement.classList.remove('hovered');
+    }
+
+    function handleFocus() {
+        const inputElement = extractors.getElementById(uniqueId);
+        inputElement.classList.add('focused');
+    }
+
+    function handleBlur() {
+        const inputElement = extractors.getElementById(uniqueId);
+        inputElement.classList.remove('focused');
     }
 </script>
 
