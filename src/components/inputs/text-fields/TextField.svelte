@@ -35,7 +35,7 @@
         on:blur={handleBlur}
     />
     <label 
-        for='text-field'
+        for = {id}
         style:position = 'absolute'
         style:margin-left = {paddingLeft}
         style:--Xl-color = {primaryColor}
@@ -168,20 +168,20 @@
         border-color: var(--Xl-hoverBorderColor);
     }
 
-    input:hover + label {
+    input.hovered + label {
         background-color: var(--Xl-fill);
     }
 
-    .focused {
+    input.focused {
         border-color: var(--Xl-color);
         border-width: var(--Xl-activeborderWidth);
     }
 
-    input:focus + label {
+    input.focused + label {
         color: var(--Xl-color); /* Изменяем цвет на основной цвет */
     }
 
-    input:focus + label, input:not(:placeholder-shown) + label {
+    input.focused + label, input:not(:placeholder-shown) + label {
         transform: translate(-0.26rem, calc(-1 * var(--Xl-liftingHeight))); /* Сдвигаем метку влево и вверх */
         font-size: 13px; /* Уменьшаем размер шрифта */
         background-color: var(--Xl-background-color);
@@ -189,7 +189,7 @@
         transition: all var(--Xl-effectsTimeCode);
     }
 
-    input:focus, input:not(:placeholder-shown) {
+    input.focused, input:not(:placeholder-shown) {
         background-color: var(--Xl-background-color);
     }
 </style>

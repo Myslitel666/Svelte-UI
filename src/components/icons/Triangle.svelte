@@ -25,9 +25,3 @@
         theme = value;
     });
 </script>
-
-<style>
-	div:hover {
-		cursor: pointer;
-	}
-</style>

@@ -1,27 +1,104 @@
-<div class="input-container" style:width={width}>
-    <TextField 
-        label={label}
-        width="100%"
-    />
-    <div class="triangle-icon">
+<div class="auto-complete-container" style:width={width}>
+    <div 
+        role="button"
+        tabindex="0"
+        class="input-container"
+        style:width = {width}
+        style:--Xl-background-color = {backgroundColor}
+        style:--Xl-fill = {fill}
+    >
+        <input 
+            id = {id}
+            type = 'text'
+            autocomplete='off'
+            placeholder = ''
+            style:outline = none
+            style:border-radius = {borderRadius}
+            style:padding-left = {paddingLeft}
+            style:padding-right = {paddingRight}
+            style:padding-top = {paddingTop}
+            style:font-size = {fontSize}
+            style:font-width = 0.5rem
+            style:border-left = {variant !== 'Outlined' ? 'none' : ''}
+            style:border-right = {variant !== 'Outlined' ? 'none' : ''}
+            style:border-top = {variant !== 'Outlined' ? 'none' : ''}
+            style:--Xl-border-color = {borderColor}
+            style:--Xl-color = {primaryColor}
+            style:--Xl-height = {height}
+            style:--Xl-activeborderWidth = {activedborderWidth}
+            style:--Xl-disabledborderWidth = {disabledborderWidth}
+            style:--Xl-hoverBorderColor = {textColor}
+            style:--Xl-textColor = {textColor}
+            {...$$props}
+            on:mouseover={handleMouseOver}
+            on:mouseout={handleMouseOut}
+            on:focus={handleFocus}
+            on:blur={handleBlur}
+        />
+        <label 
+            for='text-field'
+            style:position = 'absolute'
+            style:margin-left = {paddingLeft}
+            style:--Xl-color = {primaryColor}
+            style:--Xl-font-size = {fontSize}
+            style:--Xl-labelColor = {labelColor}
+            style:--Xl-liftingHeight = {variant === 'Outlined' ? `${height}/2` : variant === 'Standard' ? `${height}/2 + 0.45rem` : `${height}/2 + 0.74rem`}
+        >
+            {label}
+        </label>
+    </div>
+    <button 
+        class = "triangle-icon empty"
+        on:mouseover={handleMouseOver}
+        on:mouseout={handleMouseOut}
+        on:focus={handleFocus}
+        on:blur={handleBlur}
+        style:transform={isOpen ? 'rotate(180deg) translateY(50%)' : ''}
+        style:transition='transform var(--Xl-effectsTimeCode)'
+    >
         <Triangle 
             size="1.25rem" 
         />
-    </div>
+    </button>
 </div>
 
 <script lang='ts'>
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
-    import TextField from '../text-fields/TextField.svelte';
+    import { generateIdElement } from '../../../utils/elementIdUtils';
+    import { onMount } from 'svelte';
     import Triangle from '../../icons/Triangle.svelte';
+    import * as extractors from '../../../utils/valueExtractors';
 
-    export let label = 'Auto Complete';                  /* Надпись */
-    export let width = '';                               /* Ширина */
-    export let activedborderWidth = '';                  /* Толщина обводки в активном состоянии */
+    // Свойства для управления CSS-стилями
+    export let variant: 'Outlined' | 'Filled' | 'Standard' = 'Outlined';
+    export let id = ''                                        /* Уникальный идентификатор элемента */
+    export let activedborderWidth = '';                       /* Толщина обводки в активном состоянии */
+    export let backgroundColor = '';                          /* Цвет заливки */
+    export let borderColor = '';                              /* Цвет обводки */
+    export let borderRadius = '';                             /* Радиус скругления углов */
+    export let disabledborderWidth = '';                      /* Толщина обводки в неактивном состоянии */
+    export let fontSize = '';                                 /* Размер шрифта */
+    export let height = '';                                   /* Высота поля */
+    export let isOpen = false;                                /* Состояние активации AutoComplete */
+    export let label = 'Auto Complete';                       /* Надпись */
+    export let labelColor ='';                                /* Цвет надписи */
+    export let paddingLeft = '';                              /* Отступ от левой границы до курсора */
+    export let paddingRight = '';                             /* Отступ от правой границы */
+    export let paddingTop = '';                               /* Отступ от верхней границы */
+    export let primaryColor = '';                             /* Основной цвет */
+    export let textColor = '';                                /* Цвет текста */
+    export let width = '';                                    /* Ширина поля */
 
     // Флаги для отслеживания, передал ли пользователь значение извне
-    let isTextColorFromUser = activedborderWidth !== '';
+    let isBackgroundColorFromUser = backgroundColor !== '';
+    let isBorderColorFromUser = borderColor !== '';
+    let isTextColorFromUser = textColor !== '';
+    let isLabelColorFromUser = labelColor !== '';
+    let isPrimaryColorFromUser = primaryColor !== '';
+
+    //Стили из контекста темы
+    let fill = backgroundColor;
 
     let theme: IColorThemeStore | undefined;
 
@@ -30,18 +107,81 @@
         theme = value; //Инициализация объекта темы
 
         // Устанавливаем значения цветов при смене темы
-        if (!isTextColorFromUser) activedborderWidth = theme.border.disabled.color;
+        if (!isBackgroundColorFromUser) backgroundColor = variant === 'Filled' ? theme.disabled.touch : theme.colors.background;
+        if (!isBorderColorFromUser) borderColor = variant === 'Filled' ? theme.border.active.color : theme.border.disabled.color;
+        if (!isLabelColorFromUser) labelColor = theme.colors.text.label;
+        if (!isPrimaryColorFromUser) primaryColor = theme.colors.primary;
+        if (!isTextColorFromUser) textColor = theme.colors.text.primary;
+        if (!isBackgroundColorFromUser) fill = variant === 'Filled' ? theme.disabled.fill : '';
     });
 
     //Устанавливаем значения стилей после инициализации темы с проверкой не передавал ли пользователь в компонент свои значения стилей
     if (theme) {
+        if (!activedborderWidth) activedborderWidth = theme.border.active.width;
+        if (!borderRadius) borderRadius = variant === 'Outlined' ? theme.border.borderRadius : `${theme.border.borderRadius} ${theme.border.borderRadius} 0 0`;
+        if (!height) height = theme.controls.height;
+        if (!disabledborderWidth) disabledborderWidth = theme.border.disabled.width;
+        if (!paddingLeft) paddingLeft = variant === 'Standard' ? '0' : theme.controls.textField.padding;
+        if (!paddingRight) paddingRight = theme.controls.textField.padding;
+        if (!paddingTop) paddingTop = variant !== 'Outlined' ? theme.controls.textField.padding : '0';
         if (!width) width = theme.controls.width;
+        if (!fontSize) fontSize = theme.typography.fontSize;
     }
 
+    onMount(() => {
+        id ? '' : id = `text-field-${generateIdElement()}`;
+    });
+
+    function handleMouseOver() {
+        const inputElement = extractors.getElementById(id);
+        inputElement.classList.add('hovered');
+    }
+
+    function handleMouseOut() {
+        const inputElement = extractors.getElementById(id);
+        inputElement.classList.remove('hovered');
+    }
+
+    function handleFocus() {
+        const inputElement = extractors.getElementById(id);
+        inputElement.classList.add('focused');
+        toggleOpen();
+    }
+
+    function handleBlur() {
+        const inputElement = extractors.getElementById(id);
+        inputElement.classList.remove('focused');
+        toggleOpen();
+    }
+
+    // Функция для переключения состояния компонента (открыт/закрыт)
+	function toggleOpen() {
+		isOpen = !isOpen;
+	}
 </script>
 
 <style>
-    .input-container {
+    input {
+        background-color: var(--Xl-background-color);
+        color: var(--Xl-textColor);
+        height: var(--Xl-height);
+        border-color: var(--Xl-border-color);
+        border-style: solid;
+        border-width: var(--Xl-disabledborderWidth);
+        transition: border-color var(--Xl-effectsTimeCode), background-color var(--Xl-effectsTimeCode);
+        
+        box-sizing: border-box; /* Включаем border и padding в размеры элемента */
+    }
+
+    label {
+        background-color: var(--Xl-background-color);
+        pointer-events: none; /* Нажатие на label не перекрывает не припятствует активации input */
+        font-size: var(--Xl-font-size);
+        color: var(--Xl-labelColor);
+        transition: var(--Xl-effectsTimeCode);
+    }
+    
+    .auto-complete-container {
         position: relative;
     }
 
@@ -50,6 +190,41 @@
         right: 0.53rem;
         top: 50%;
         transform: translateY(-50%);
-        pointer-events: none; /* Наведение мыши на стрелку не препятствует затемнению обводки поля */
+    }
+
+    .input-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .hovered {
+        background-color: var(--Xl-fill);
+        border-color: var(--Xl-hoverBorderColor);
+    }
+
+    input.hovered + label {
+        background-color: var(--Xl-fill);
+    }
+
+    input.focused {
+        border-color: var(--Xl-color);
+        border-width: var(--Xl-activeborderWidth);
+    }
+
+    input.focused + label {
+        color: var(--Xl-color); /* Изменяем цвет на основной цвет */
+    }
+
+    input.focused + label, input:not(:placeholder-shown) + label {
+        transform: translate(-0.26rem, calc(-1 * var(--Xl-liftingHeight))); /* Сдвигаем метку влево и вверх */
+        font-size: 13px; /* Уменьшаем размер шрифта */
+        background-color: var(--Xl-background-color);
+        padding: 0 0.26rem 0 0.26rem;
+        transition: all var(--Xl-effectsTimeCode);
+    }
+
+    input.focused, input:not(:placeholder-shown) {
+        background-color: var(--Xl-background-color);
     }
 </style>
