@@ -5,6 +5,7 @@
         onmousedown = {toggleOpen}
         onblur = {() => {isOpen ? toggleOpen() : '';}}
         label = 'Auto Complete'
+        variant = {variant}
         {...$$props}
     />
     <button 
@@ -25,7 +26,8 @@
         }}
         style:width=1.75rem
         style:height=1.75rem
-        style:border-radius='50%' 
+        style:border-radius='50%'
+        style:right = {variant === 'Standard' ? '0rem' : '0.53rem'}
         style:transform = {isOpen ? 'rotate(180deg) translateY(50%)' : ''}
         style:transition = 'transform var(--Xl-effectsTimeCode)'
         style:background-color = {triangleHover ? theme?.disabled.ghost : ''}
@@ -47,6 +49,7 @@
     let textFieldRef: TextField;
 
     // Свойства для управления CSS-стилями
+    export let variant: 'Outlined' | 'Filled' | 'Standard' = 'Outlined';
     export let id = ''                                        /* Уникальный идентификатор элемента */
     export let isOpen = false;                                /* Состояние активации AutoComplete */
     export let width = '';                                    /* Ширина поля */
@@ -78,7 +81,6 @@
 
     .triangle-icon {
         position: absolute;
-        right: 0.53rem;
         top: 50%;
         transform: translateY(-50%);
     }

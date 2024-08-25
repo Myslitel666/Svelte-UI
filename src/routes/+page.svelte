@@ -20,6 +20,12 @@
 				label = 'Standard'
 			/>
 		</div>
+		<p class = 'heading'>Auto Complete</p>
+		<div class="components-container">
+			<AutoComplete options={['Apple', 'Orange', 'Banana', 'Grape', 'Mango']} />
+			<AutoComplete variant = 'Filled' />
+			<AutoComplete variant = 'Standard' />
+		</div>
 		<p class = 'heading'>Button</p>
 		<div class="components-container">
 			<Button variant = 'Contained'>
@@ -38,11 +44,6 @@
 			<ColorThemeSwitch />
 		</div>
 		<p class='heading'>Auto Complete</p>
-		<div class="components-container">
-			<AutoComplete options={['Apple', 'Orange', 'Banana', 'Grape', 'Mango']} />
-			<AutoComplete variant = 'Filled' />
-			<AutoComplete variant = 'Standard' />
-		</div>
 	</div>
 </div>
 
