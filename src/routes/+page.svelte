@@ -38,8 +38,10 @@
 			<ColorThemeSwitch />
 		</div>
 		<p class='heading'>Auto Complete</p>
-		<div>
+		<div class="components-container">
 			<AutoComplete options={['Apple', 'Orange', 'Banana', 'Grape', 'Mango']} />
+			<AutoComplete variant = 'Filled' />
+			<AutoComplete variant = 'Standard' />
 		</div>
 	</div>
 </div>

@@ -115,22 +115,22 @@
         id ? '' : id = `text-field-${generateIdElement()}`;
     });
 
-    function handleMouseOver() {
+    export function handleMouseOver() {
         const inputElement = extractors.getElementById(id);
         inputElement.classList.add('hovered');
     }
 
-    function handleMouseOut() {
+    export function handleMouseOut() {
         const inputElement = extractors.getElementById(id);
         inputElement.classList.remove('hovered');
     }
 
-    function handleFocus() {
+    export function handleFocus() {
         const inputElement = extractors.getElementById(id);
         inputElement.classList.add('focused');
     }
 
-    function handleBlur() {
+    export function handleBlur() {
         const inputElement = extractors.getElementById(id);
         inputElement.classList.remove('focused');
     }
