@@ -24,10 +24,10 @@
 </div>
 
 <script lang='ts'>
+	import { generateIdElement } from '../../../stores/ElementIdStore';
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
     import { onMount } from 'svelte';
-    import { generateIdElement } from '../../../utils/elementIdUtils';
 
     export let variant = 'Contained';                    /* Тип кнопки */
     export let id = ''                                   /* Уникальный идентификатор элемента */
@@ -82,7 +82,7 @@
     }
 
     onMount(() => {
-        id ? '' : id = `text-field-${generateIdElement()}`;
+        id ? '' : id = `button-${generateIdElement()}`;
     });
 </script>
 

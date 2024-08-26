@@ -11,7 +11,6 @@
     import { themeStore } from '../stores/ColorThemeStore';
 	import { onMount } from 'svelte';
 	import { initialCSSVariables } from '../utils/initialCSSVariables';
-	import { initialIdElement } from '../utils/elementIdUtils';
 	import './font.css';
 	import './app.css';
 
@@ -24,6 +23,5 @@
 
   onMount(() => {
     initialCSSVariables(); // Применяем тему при запуске приложения
-	initialIdElement(); //Задаём начальное значение для id элемента.
   });
 </script>

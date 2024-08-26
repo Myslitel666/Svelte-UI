@@ -51,7 +51,7 @@
 <script lang='ts'>
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
-    import { generateIdElement } from '../../../utils/elementIdUtils';
+    import { generateIdElement } from '../../../stores/ElementIdStore';
     import { onMount } from 'svelte';
     import Arrow from '../../icons/TriangularArrowDown.svelte';
     import TextField from '../text-fields/TextField.svelte';

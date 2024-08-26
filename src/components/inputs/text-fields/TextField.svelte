@@ -50,7 +50,7 @@
 <script lang='ts'>
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
-    import { generateIdElement } from '../../../utils/elementIdUtils';
+    import { generateIdElement } from '../../../stores/ElementIdStore';
     import { onMount } from 'svelte';
     import * as extractors from '../../../utils/valueExtractors';
 

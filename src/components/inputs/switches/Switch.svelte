@@ -34,7 +34,7 @@
     import { type IColorThemeStore } from "../../../interfaces/color-theme/IColorThemeStore";
     import { themeStore } from '../../../stores/ColorThemeStore';
     import { onMount } from "svelte";
-    import { generateIdElement } from "../../../utils/elementIdUtils";
+    import { generateIdElement } from "../../../stores/ElementIdStore";
 
     export let color = '';                                 /* Цвет переключателя */
     export let id = ''                                        /* Уникальный идентификатор элемента */
@@ -61,7 +61,7 @@
     });
 
     onMount(() => {
-        id ? '' : id = `text-field-${generateIdElement()}`;
+        id ? '' : id = `switch-${generateIdElement()}`;
     });
 </script>
 
