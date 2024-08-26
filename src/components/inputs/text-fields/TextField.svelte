@@ -38,6 +38,7 @@
         for = {id}
         style:position = 'absolute'
         style:margin-left = {paddingLeft}
+        style:background-color = {variant === 'Filled' ? 'transparent' : ''}
         style:--Xl-color = {primaryColor}
         style:--Xl-font-size = {fontSize}
         style:--Xl-labelColor = {labelColor}
@@ -101,7 +102,12 @@
     //Устанавливаем значения стилей после инициализации темы с проверкой не передавал ли пользователь в компонент свои значения стилей
     if (theme) {
         if (!activedborderWidth) activedborderWidth = theme.border.active.width;
-        if (!borderRadius) borderRadius = variant === 'Outlined' ? theme.border.borderRadius : `${theme.border.borderRadius} ${theme.border.borderRadius} 0 0`;
+        if (!borderRadius) { 
+            borderRadius = variant === 'Outlined' ? theme.border.borderRadius : `${theme.border.borderRadius} ${theme.border.borderRadius} 0 0`; 
+        }
+        else {
+            borderRadius = variant === 'Outlined' ? borderRadius : `${borderRadius} ${borderRadius} 0 0`; 
+        }
         if (!height) height = theme.controls.height;
         if (!disabledborderWidth) disabledborderWidth = theme.border.disabled.width;
         if (!paddingLeft) paddingLeft = variant === 'Standard' ? '0' : theme.controls.textField.padding;

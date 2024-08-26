@@ -46,6 +46,14 @@
             size=1.16rem 
         />
     </button>
+    {#if isOpen}
+    <div 
+        class="drop-list"
+        style:border-radius = {borderRadius}
+    >
+        <!-- Ваши элементы списка здесь -->
+    </div>
+    {/if}
 </div>
 
 <script lang='ts'>
@@ -60,6 +68,7 @@
     export let variant: 'Outlined' | 'Filled' | 'Standard' = 'Outlined';
     export let id = ''                                        /* Уникальный идентификатор элемента */
     export let isOpen = false;                                /* Состояние активации AutoComplete */
+    export let borderRadius = '';                             /* Радиус скругления углов */
     export let options: string[] = [];                        /* Состояние для передачи списков */
     export let width = '';                                    /* Ширина поля */
 
@@ -77,6 +86,14 @@
     themeStore.subscribe(value => {
         theme = value; //Инициализация объекта темы
     });
+
+        //Устанавливаем значения стилей после инициализации темы с проверкой не передавал ли пользователь в компонент свои значения стилей
+    if (theme) {
+        if (!borderRadius) borderRadius = variant === 'Outlined' ? theme.border.borderRadius : `0 0 ${theme.border.borderRadius} ${theme.border.borderRadius}`;
+        else {
+            borderRadius = variant === 'Outlined' ? borderRadius : `0 0 ${borderRadius} ${borderRadius}`; 
+        }
+    }
 
     onMount(() => {
         id ? '' : id = `auto-complete-${generateIdElement()}`;
@@ -107,5 +124,17 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+    }
+
+    .drop-list {
+        position: absolute;
+        top: 100%; /* Помещает div ниже основного элемента */
+        width: 100%; /* Или используйте фиксированную ширину, если нужно */
+        border: 1px solid #ccc;
+        background-color: #fff;
+        z-index: 1000; /* Убедитесь, что список отображается поверх других элементов */
+        min-height: 14rem;
+
+        box-sizing: border-box;
     }
 </style>
