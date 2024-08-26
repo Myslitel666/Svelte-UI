@@ -9,11 +9,11 @@ const generateIdElement = () => {
     elementId.update(n => n + 1);
 
     // Возвращаем текущее значение (которое было обновлено)
-    let id: number = 0;
+    let currentId;
     elementId.subscribe(value => {
-        id = value;
+        currentId = value;
     })();
-    return id;
+    return currentId;
 };
 
 // Экспортируем все необходимые элементы
