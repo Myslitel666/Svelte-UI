@@ -43,7 +43,6 @@
 		<div>
 			<ColorThemeSwitch />
 		</div>
-		<p class='heading'>Auto Complete</p>
 	</div>
 </div>
 

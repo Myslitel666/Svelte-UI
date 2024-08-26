@@ -1,8 +1,11 @@
 <div 
+    role="button" 
+    tabindex="0" 
     bind:this={autoCompleteRef}
     class="auto-complete-container" 
     style:width={width}
-    on:blur={()=>{console.log('onfocus')}}
+    on:click={()=>{document.addEventListener('click', handleClickOutside);}}
+    on:keydown={()=>{}}
 >
     <TextField 
         bind:this={textFieldRef} 
@@ -77,7 +80,6 @@
 
     onMount(() => {
         id ? '' : id = `auto-complete-${generateIdElement()}`;
-        document.addEventListener('click', handleClickOutside);
     });
 
     // Функция для переключения состояния компонента (открыт/закрыт)
@@ -85,10 +87,13 @@
 		isOpen = !isOpen;
 	}
 
-    // Функция, которая будет вызвана при клике вне div
+    // Функция, которая будет вызвана при клике вне AutoComplete
     function handleClickOutside(event: MouseEvent) {
-        if (autoCompleteRef && !autoCompleteRef.contains(event.target as Node)) {
+        let node = event.target as Node;
+
+        if (autoCompleteRef && !autoCompleteRef.contains(node)) {
             isOpen ? toggleOpen() : ''
+            document.removeEventListener('click', handleClickOutside); //Удаляем обработчик из root после утраты фокуса AutoComplete
         }
     }
 </script>
