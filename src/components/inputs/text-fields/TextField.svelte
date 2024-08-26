@@ -128,6 +128,7 @@
     export function handleFocus() {
         const inputElement = extractors.getElementById(id);
         inputElement.classList.add('focused');
+        inputElement.focus(); // Перенаправление фокуса на элемент input при вызове данного обработчика из других компонентов
     }
 
     export function handleBlur() {

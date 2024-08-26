@@ -1,9 +1,15 @@
-<div class="auto-complete-container" style:width={width}>
+<div 
+    bind:this={autoCompleteRef}
+    class="auto-complete-container" 
+    style:width={width}
+    on:blur={()=>{console.log('onfocus')}}
+>
     <TextField 
         bind:this={textFieldRef} 
         id = {id}
-        onmousedown = {toggleOpen}
-        onblur = {() => {isOpen ? toggleOpen() : '';}}
+        onmousedown = {() => {
+            isOpen ? '' : toggleOpen();
+        }}
         label = 'Auto Complete'
         variant = {variant}
         {...$$props}
@@ -18,12 +24,13 @@
             textFieldRef.handleMouseOut()
             triangleHover = !triangleHover;
         }}
-        on:mousedown = {toggleOpen}
-        on:focus = {()=>{ textFieldRef.handleFocus() }}
-        on:blur = {()=>{ 
-            textFieldRef.handleBlur(); 
-            isOpen ? toggleOpen() : '';
+        on:mouseup = {() => {
+            toggleOpen();
         }}
+        on:focus = {()=>{
+            textFieldRef.handleFocus();
+        }}
+        on:blur = {()=>{}}
         style:width=1.75rem
         style:height=1.75rem
         style:border-radius='50%'
@@ -32,7 +39,7 @@
         style:transition = 'transform var(--Xl-effectsTimeCode)'
         style:background-color = {triangleHover ? theme?.disabled.ghost : ''}
     >
-        <Arrow 
+        <Arrow
             size=1.16rem 
         />
     </button>
@@ -46,13 +53,17 @@
     import Arrow from '../../icons/TriangularArrowDown.svelte';
     import TextField from '../text-fields/TextField.svelte';
 
-    let textFieldRef: TextField;
-
-    // Свойства для управления CSS-стилями
+    // Публичные свойства
     export let variant: 'Outlined' | 'Filled' | 'Standard' = 'Outlined';
     export let id = ''                                        /* Уникальный идентификатор элемента */
     export let isOpen = false;                                /* Состояние активации AutoComplete */
+    export let options: string[] = [];                        /* Состояние для передачи списков */
     export let width = '';                                    /* Ширина поля */
+
+    // Приватные атрибуты
+    let autoCompleteRef: HTMLElement;
+    let textFieldRef: TextField;
+    let filteredOptions: string[] = [];
 
     //Стили из контекста темы
     let triangleHover = false;
@@ -66,12 +77,20 @@
 
     onMount(() => {
         id ? '' : id = `auto-complete-${generateIdElement()}`;
+        document.addEventListener('click', handleClickOutside);
     });
 
     // Функция для переключения состояния компонента (открыт/закрыт)
 	function toggleOpen() {
 		isOpen = !isOpen;
 	}
+
+    // Функция, которая будет вызвана при клике вне div
+    function handleClickOutside(event: MouseEvent) {
+        if (autoCompleteRef && !autoCompleteRef.contains(event.target as Node)) {
+            isOpen ? toggleOpen() : ''
+        }
+    }
 </script>
 
 <style>
