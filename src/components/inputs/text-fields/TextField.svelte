@@ -7,10 +7,11 @@
     style:--Xl-fill = {fill}
 >
     <input 
-        id = {id}
-        type = 'text'
         autocomplete='off'
+        id = {id}
+        list = {list}
         placeholder = ''
+        type = 'text'
         style:outline = none
         style:border-radius = {borderRadius}
         style:padding-left = {paddingLeft}
@@ -73,6 +74,9 @@
     export let primaryColor = '';                             /* Основной цвет */
     export let textColor = '';                                /* Цвет текста */
     export let width = '';                                    /* Ширина поля */
+
+    //Свойства для управления функциональностью компонента
+    export let list = ''                                        /* Уникальный идентификатор элемента */
 
     // Флаги для отслеживания, передал ли пользователь значение извне
     let isBackgroundColorFromUser = backgroundColor !== '';

@@ -15,8 +15,13 @@
         }}
         label = 'Auto Complete'
         variant = {variant}
+        list = {'list-' + id}
         {...$$props}
     />
+    <datalist id={'list-' + id}>
+        <option value="A">  
+        <option value="B">
+      </datalist>
     <button 
         class = "triangle-icon"
         on:mouseover = {() => {
@@ -48,8 +53,8 @@
     </button>
     {#if isOpen}
     <div 
-        class="drop-list"
-        style:border-radius = {borderRadius}
+        class="drop-list {dropPositionTop ? 'top' : 'bottom'}"
+        bind:this={dropListRef}
     >
         <!-- Ваши элементы списка здесь -->
     </div>
@@ -67,6 +72,8 @@
     // Публичные свойства
     export let variant: 'Outlined' | 'Filled' | 'Standard' = 'Outlined';
     export let id = ''                                        /* Уникальный идентификатор элемента */
+    export let backgroundColor = '';                          /* Цвет заливки */
+    export let borderColor = '';                              /* Цвет обводки */
     export let isOpen = false;                                /* Состояние активации AutoComplete */
     export let borderRadius = '';                             /* Радиус скругления углов */
     export let options: string[] = [];                        /* Состояние для передачи списков */
@@ -76,6 +83,12 @@
     let autoCompleteRef: HTMLElement;
     let textFieldRef: TextField;
     let filteredOptions: string[] = [];
+    let dropPositionTop = false; // Определяет, следует ли отображать список сверху
+    let dropListRef: HTMLElement;
+
+    // Флаги для отслеживания, передал ли пользователь значение извне
+    let isBackgroundColorFromUser = backgroundColor !== '';
+    let isBorderColorFromUser = borderColor !== '';
 
     //Стили из контекста темы
     let triangleHover = false;
@@ -87,7 +100,7 @@
         theme = value; //Инициализация объекта темы
     });
 
-        //Устанавливаем значения стилей после инициализации темы с проверкой не передавал ли пользователь в компонент свои значения стилей
+    //Устанавливаем значения стилей после инициализации темы с проверкой не передавал ли пользователь в компонент свои значения стилей
     if (theme) {
         if (!borderRadius) borderRadius = variant === 'Outlined' ? theme.border.borderRadius : `0 0 ${theme.border.borderRadius} ${theme.border.borderRadius}`;
         else {
@@ -102,6 +115,9 @@
     // Функция для переключения состояния компонента (открыт/закрыт)
 	function toggleOpen() {
 		isOpen = !isOpen;
+        if (isOpen) {
+            setDropPosition();
+        }
 	}
 
     // Функция, которая будет вызвана при клике вне AutoComplete
@@ -112,6 +128,23 @@
             isOpen ? toggleOpen() : ''
             document.removeEventListener('click', handleClickOutside); //Удаляем обработчик из root после утраты фокуса AutoComplete
         }
+    }
+
+    // Функция для определения положения drop-list
+    function setDropPosition() {
+        const rect = autoCompleteRef.getClientRects();
+
+        const spaceBelow = window.innerHeight - autoCompleteRef.offsetTop + autoCompleteRef.offsetHeight;
+
+        console.log('window.innerHeight');
+        console.log(window.innerHeight);
+        console.log('dropListRef.offsetHeight');
+        console.log(dropListRef?.offsetHeight);
+        console.log('autoCompleteRef.offsetHeight');
+        console.log(autoCompleteRef.offsetHeight);
+
+        // Если места снизу не хватает, и сверху больше места, отображаем сверху
+        dropPositionTop = spaceBelow > 0;
     }
 </script>
 
@@ -128,13 +161,20 @@
 
     .drop-list {
         position: absolute;
-        top: 100%; /* Помещает div ниже основного элемента */
         width: 100%; /* Или используйте фиксированную ширину, если нужно */
         border: 1px solid #ccc;
         background-color: #fff;
         z-index: 1000; /* Убедитесь, что список отображается поверх других элементов */
-        min-height: 14rem;
+        height: 5rem;
 
         box-sizing: border-box;
+    }
+
+    .drop-list.top {
+        bottom: 100%; /* Отображение сверху */
+    }
+
+    .drop-list.bottom {
+        top: 100%; /* Отображение снизу */
     }
 </style>
