@@ -4,7 +4,7 @@
 	"homepage": "https://myslitel666.github.io/Svelte-UI/",
 	"scripts": {
 		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build",
+		"deploy": "gh-pages -d www",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
