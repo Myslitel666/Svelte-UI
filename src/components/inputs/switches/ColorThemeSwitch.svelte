@@ -1,7 +1,8 @@
 <div>
     <Switch 
-        checked = {checked}
+        isChecked = {checked}
         onClick = {toggleThemeMode}
+        {...$$props}
     >
         <ActiveIcon slot="activeIcon" size="1.1rem" />
         <DisabledIcon slot="disabledIcon" size="1.1rem" />

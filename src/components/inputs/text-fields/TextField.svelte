@@ -9,7 +9,6 @@
     <input 
         autocomplete='off'
         id = {id}
-        list = {list}
         placeholder = ''
         type = 'text'
         style:outline = none
@@ -74,9 +73,6 @@
     export let primaryColor = '';                             /* Основной цвет */
     export let textColor = '';                                /* Цвет текста */
     export let width = '';                                    /* Ширина поля */
-
-    //Свойства для управления функциональностью компонента
-    export let list = ''                                        /* Уникальный идентификатор элемента */
 
     // Флаги для отслеживания, передал ли пользователь значение извне
     let isBackgroundColorFromUser = backgroundColor !== '';

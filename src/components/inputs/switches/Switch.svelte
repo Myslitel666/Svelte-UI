@@ -2,17 +2,17 @@
     <span 
         class="track"
         style:height = {height}
-        style:background-color = {checked ? color : theme.disabled.fill}
+        style:background-color = {isChecked ? color : theme.disabled.fill}
         style:--Xl-border-radius = {borderRadius}
     >
     </span>
     <span 
         class="switch"
-        style:transform = {`translate(${checked ? '1.76rem' : '0.26rem'}, 0.26rem)`}
+        style:transform = {`translate(${isChecked ? '1.76rem' : '0.26rem'}, 0.26rem)`}
         style:--Xl-background-color = {theme.colors.background}
         style:--Xl-border-radius = {borderRadius}
     >
-        {#if checked}
+        {#if isChecked}
             <slot name="activeIcon" />     <!-- Компонент switch'а для активного состояния -->
         {:else}
             <slot name="disabledIcon" />   <!-- Компонент switch'а для неактивного состояния -->
@@ -22,11 +22,12 @@
         type="checkbox"
         id = {id}
         style:height = {height}
-        bind:checked 
+        bind:checked={isChecked} 
         on:click={()=> {
             toggleSwitch();
             onClick();
         }} 
+        {...$$props}
     />
 </div>
 
@@ -37,8 +38,8 @@
     import { generateIdElement } from "../../../stores/ElementIdStore";
 
     export let color = '';                                 /* Цвет переключателя */
-    export let id = ''                                        /* Уникальный идентификатор элемента */
-    export let checked: boolean = false;                   /* начальное состояние переключателя */
+    export let id = ''                                     /* Уникальный идентификатор элемента */
+    export let isChecked: boolean = false;                 /* начальное состояние переключателя */
     export let onClick = () => {};                         /* Обработчик нажатия */
 
     let height = '2rem'; // Высота Switch'а
@@ -48,7 +49,7 @@
     let isColorFromUser = color !== '';
 
     function toggleSwitch() {
-        checked = !checked; // изменение состояния при клике
+        isChecked = !isChecked; // изменение состояния при клике
     }
 
     let theme: IColorThemeStore;

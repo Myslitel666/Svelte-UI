@@ -43,7 +43,11 @@
 		</div>
 		<p class='heading'>Switch</p>
 		<div>
-			<Switch />
+			<Switch
+				onchange={(e: Event) => {
+					const checked = extractors.getChecked(e);
+				}}
+			 />
 		</div>
 		<p class='heading'>Color Theme Switch</p>
 		<div>

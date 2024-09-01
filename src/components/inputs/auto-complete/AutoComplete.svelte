@@ -1,10 +1,11 @@
 <div 
+    id = '{id}-container'
     role="button" 
     tabindex="0" 
     bind:this={autoCompleteRef}
     class="auto-complete-container" 
     style:width={width}
-    on:click={()=>{document.addEventListener('click', handleClickOutside);}}
+    on:mousedown={()=>{document.addEventListener('mousedown', handleClickOutside);}}
     on:keydown={()=>{}}
 >
     <TextField 
@@ -15,13 +16,8 @@
         }}
         label = 'Auto Complete'
         variant = {variant}
-        list = {'list-' + id}
         {...$$props}
     />
-    <datalist id={'list-' + id}>
-        <option value="A">  
-        <option value="B">
-      </datalist>
     <button 
         class = "triangle-icon"
         on:mouseover = {() => {
@@ -51,21 +47,25 @@
             size=1.16rem 
         />
     </button>
-    {#if isOpen}
-    <div 
-        class="drop-list {dropPositionTop ? 'top' : 'bottom'}"
-        bind:this={dropListRef}
+    <div
+        id = 'drop-list-id'
+        class = "drop-list {isOpen ? 'open' : ''} {isDropListBottom ? 'bottom' : 'top'}"
+        bind:this = {dropListRef}
+        style:--Xl-dropListHeight = '{dropListHeight}px'
     >
-        <!-- Ваши элементы списка здесь -->
+        {#if isOpen}
+            <div>
+                I'm Option
+            </div>
+        {/if}
     </div>
-    {/if}
 </div>
 
 <script lang='ts'>
 	import { type IColorThemeStore } from '../../../interfaces/color-theme/IColorThemeStore';
     import { themeStore } from '../../../stores/ColorThemeStore';
     import { generateIdElement } from '../../../stores/ElementIdStore';
-    import { onMount } from 'svelte';
+    import { onMount, tick } from 'svelte';
     import Arrow from '../../icons/TriangularArrowDown.svelte';
     import TextField from '../text-fields/TextField.svelte';
 
@@ -83,7 +83,7 @@
     let autoCompleteRef: HTMLElement;
     let textFieldRef: TextField;
     let filteredOptions: string[] = [];
-    let dropPositionTop = false; // Определяет, следует ли отображать список сверху
+    let isDropListBottom = true; // Определяет, следует ли отображать список снизу AutoComplete
     let dropListRef: HTMLElement;
 
     // Флаги для отслеживания, передал ли пользователь значение извне
@@ -110,7 +110,12 @@
 
     onMount(() => {
         id ? '' : id = `auto-complete-${generateIdElement()}`;
+
+        window.addEventListener('resize', updateDropListHeight); // При изменении высоты окна
+        updateDropListHeight();
     });
+
+    let dropListHeight: number;
 
     // Функция для переключения состояния компонента (открыт/закрыт)
 	function toggleOpen() {
@@ -126,25 +131,41 @@
 
         if (autoCompleteRef && !autoCompleteRef.contains(node)) {
             isOpen ? toggleOpen() : ''
-            document.removeEventListener('click', handleClickOutside); //Удаляем обработчик из root после утраты фокуса AutoComplete
+            document.removeEventListener('mousedown', handleClickOutside); //Удаляем обработчик из root после утраты фокуса AutoComplete
         }
     }
 
+    async function updateDropListHeight() {
+        dropListHeight = window.innerHeight * 0.4;
+
+        //Проверка на возможность помещения drop list'а под AutoComplete
+        //await tick(); // Дождаться обновления DOM
+
+        // console.log('window.innerHeight',  window.innerHeight);
+        // if (autoCompleteRef) {
+        //     let rect = autoCompleteRef.getClientRects();
+
+        //     if (rect.length > 0) {
+        //         const bottom = rect[0].bottom;
+        //         console.log('autoCompleteRef.bottom',  bottom);
+        //         console.log('dropListHeight',  dropListHeight);
+        //     }
+        // }
+    }
+
     // Функция для определения положения drop-list
-    function setDropPosition() {
-        const rect = autoCompleteRef.getClientRects();
+    async function setDropPosition() {
+        await tick(); // Дождаться обновления DOM
 
-        const spaceBelow = window.innerHeight - autoCompleteRef.offsetTop + autoCompleteRef.offsetHeight;
+        if (dropListRef) {
+            const rect = dropListRef.getClientRects();
 
-        console.log('window.innerHeight');
-        console.log(window.innerHeight);
-        console.log('dropListRef.offsetHeight');
-        console.log(dropListRef?.offsetHeight);
-        console.log('autoCompleteRef.offsetHeight');
-        console.log(autoCompleteRef.offsetHeight);
-
-        // Если места снизу не хватает, и сверху больше места, отображаем сверху
-        dropPositionTop = spaceBelow > 0;
+            if (rect.length > 0) {
+                const bottom = rect[0].bottom;
+                const spaceBelow = window.innerHeight - bottom;
+                isDropListBottom = spaceBelow > 0;
+            }
+        }
     }
 </script>
 
@@ -162,12 +183,16 @@
     .drop-list {
         position: absolute;
         width: 100%; /* Или используйте фиксированную ширину, если нужно */
-        border: 1px solid #ccc;
         background-color: #fff;
+        border-radius: 6px;
         z-index: 1000; /* Убедитесь, что список отображается поверх других элементов */
-        height: 5rem;
 
         box-sizing: border-box;
+    }
+
+    .drop-list.open {
+        border: 1px solid #ccc;
+        height: var(--Xl-dropListHeight);
     }
 
     .drop-list.top {
