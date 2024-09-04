@@ -1,4 +1,4 @@
-export interface GridColumn {
+export interface IGridColumn {
     /** Уникальное имя поля колонки */
     field: string;
   
@@ -16,22 +16,18 @@ export interface GridColumn {
   
     /** Флаг, указывающий, редактируемы ли ячейки этой колонки */
     editable?: boolean;
-
   
     /** Флаг, указывающий, сортируется ли колонка */
     sortable?: boolean;
   
-    /** Функция для кастомной сортировки */
-    sortComparator?: (a: any, b: any) => number;
-  
     /** Тип данных колонки (например, 'string', 'number', 'date') */
-    type?: string | number | Date | boolean;
+    type?: 'string' | 'number' | 'date' | 'boolean';
   
     /** Минимальная ширина колонки */
-    minWidth?: number;
+    minWidth?: number | string;
   
     /** Максимальная ширина колонки */
-    maxWidth?: number;
+    maxWidth?: number | string;
   
     /** Текст подсказки для заголовка */
     headerTooltip?: string;

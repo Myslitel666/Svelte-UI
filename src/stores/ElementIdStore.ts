@@ -3,7 +3,6 @@ import { writable } from 'svelte/store';
 let elementId = writable(0);
 
 //Сгенерировать id
-// Сгенерировать новый id
 const generateIdElement = () => {
     // Получаем текущее значение, увеличиваем на 1 и обновляем store
     elementId.update(n => n + 1);
