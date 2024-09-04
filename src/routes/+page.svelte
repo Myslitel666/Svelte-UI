@@ -53,6 +53,10 @@
 		<div>
 			<ColorThemeSwitch />
 		</div>
+		<p class='heading'>Data Grid</p>
+		<div>
+			<DataGrid />
+		</div>
 	</div>
 </div>
 
@@ -62,6 +66,7 @@
 	import ColorThemeSwitch from '../components/inputs/switches/ColorThemeSwitch.svelte';
 	import Button from '../components/inputs/buttons/Button.svelte';
 	import AutoComplete from '../components/inputs/auto-complete/AutoComplete.svelte';
+	import DataGrid from '../components/data-display/data-grid/DataGrid.svelte';
 	import * as extractors from '../utils/valueExtractors';
 </script>
 
