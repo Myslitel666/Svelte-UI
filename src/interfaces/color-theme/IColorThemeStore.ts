@@ -12,6 +12,9 @@ export interface IColorThemeStore {
             color: string;
             width: string;
         };
+        alegant: {
+            color:  string;
+        };
         borderRadius: string;
     };
     colors: {

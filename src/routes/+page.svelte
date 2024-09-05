@@ -20,6 +20,10 @@
 				label = 'Standard'
 			/>
 		</div>
+		<p class='heading'>Data Grid</p>
+		<div class="components-container">
+			<DataGrid />
+		</div>
 		<p class = 'heading'>Auto Complete</p>
 		<div class="components-container">
 			<AutoComplete 
@@ -52,10 +56,6 @@
 		<p class='heading'>Color Theme Switch</p>
 		<div>
 			<ColorThemeSwitch />
-		</div>
-		<p class='heading'>Data Grid</p>
-		<div>
-			<DataGrid />
 		</div>
 	</div>
 </div>

@@ -20,6 +20,9 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
             color:  $themeMode === 'light' ? '#959595' : '#a0a0a0',
             width: '2px',
         },
+        alegant: {
+            color:  $themeMode === 'light' ? '#ddd' : '#484848',
+        },
         borderRadius: '4px',
     },
     colors: {
@@ -39,7 +42,7 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
         textField: {
             padding: '0.85rem',
         },
-        height: '3.15rem',
+        height: '3rem',
         width: '15rem',
     },
     disabled: {
