@@ -2,7 +2,7 @@
     class = 'data-grid border'
     style:background-color = {rowBg}
     style:--Xl-border-color = {borderColor}
-    style:--Xl-row-bg = {headBg}
+    style:--Xl-head-bg = {headBg}
 >
     <div 
         class = 'row border'
@@ -71,7 +71,7 @@
 
         // Устанавливаем значения цветов при смене темы
         rowBg = theme.action.hover;
-        headBg = theme.disabled.ghost;
+        headBg = theme.action.selected;
         if (!isBackgroundColorFromUser) backgroundColor = theme.disabled.touch;
         if (!isBorderColorFromUser) borderColor = theme.border.alegant.color;
     });
@@ -120,7 +120,7 @@
     }
 
     .row:hover {
-        background-color: var(--Xl-row-bg);
+        background-color: var(--Xl-head-bg);
     }
 
     .row:last-child {

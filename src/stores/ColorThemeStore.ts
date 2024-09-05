@@ -8,8 +8,8 @@ const themeMode = writable('light');
 // Определение темы оформления пользовательского интерфейса
 const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
     action: {
-        hover: $themeMode === 'light' ? '#fafafa' : '#202020',
-        selected: $themeMode === 'light' ? '#ddd' : '#222',
+        hover: $themeMode === 'light' ? '#fafafa' : '#1c1c1c',
+        selected: $themeMode === 'light' ? '#f5f5f5' : '#2e2e2e',
     },
     border: {
         disabled: {
@@ -49,7 +49,6 @@ const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
         expressed: $themeMode === 'light' ? '#757575' : '#e0e0e0',
         fill: $themeMode === 'light' ? '#e5e5e5' : '#4a4a4a',
         touch: $themeMode === 'light' ? '#efefef' : '#2f2f2f',
-        ghost: $themeMode === 'light' ? '#f5f5f5' : '#2c2c2c',
     },
     typography: {
         font: 'Century Gothic',

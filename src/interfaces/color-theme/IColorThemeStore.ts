@@ -41,7 +41,6 @@ export interface IColorThemeStore {
         expressed: string;
         fill: string;
         touch: string;
-        ghost: string;
     };
     typography: {
         font: string;
