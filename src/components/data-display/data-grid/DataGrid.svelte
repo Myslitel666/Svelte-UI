@@ -1,8 +1,29 @@
 <div 
     class = 'data-grid border'
+    style:background-color = {rowBg}
     style:--Xl-border-color = {borderColor}
+    style:--Xl-row-bg = {headBg}
 >
-    <div class = 'row border'>
+    <div 
+        class = 'row border'
+        style:background-color = {headBg}
+    >
+        <div class = 'cell border'>
+            <p>Id</p>
+        </div>
+        <div class = 'cell border'>
+            <p>Jargon</p>
+        </div>
+        <div class = 'cell border'>
+            <p>Translate</p>
+        </div>
+        <div class = 'cell border'>
+            <p>Example Of Use</p>
+        </div>
+    </div>
+    <div 
+        class = 'row border'
+    >
         <div class = 'cell border'>
         </div>
         <div class = 'cell border'>
@@ -12,17 +33,9 @@
         <div class = 'cell border'>
         </div>
     </div>
-    <div class = 'row border'>
-        <div class = 'cell border'>
-        </div>
-        <div class = 'cell border'>
-        </div>
-        <div class = 'cell border'>
-        </div>
-        <div class = 'cell border'>
-        </div>
-    </div>
-    <div class = 'row border'>
+    <div 
+        class = 'row border'
+    >
         <div class = 'cell border'>
         </div>
         <div class = 'cell border'>
@@ -46,6 +59,10 @@
     let isBackgroundColorFromUser = backgroundColor !== '';
     let isBorderColorFromUser = borderColor !== '';
 
+    // Приватные стили
+    let rowBg = '';
+    let headBg = '';
+
     let theme: IColorThemeStore | undefined;
 
     // Подписываемся на изменения темы
@@ -53,9 +70,16 @@
         theme = value; //Инициализация объекта темы
 
         // Устанавливаем значения цветов при смене темы
+        rowBg = theme.action.hover;
+        headBg = theme.disabled.ghost;
         if (!isBackgroundColorFromUser) backgroundColor = theme.disabled.touch;
         if (!isBorderColorFromUser) borderColor = theme.border.alegant.color;
     });
+
+    //Устанавливаем значения стилей после инициализации темы с проверкой не передавал ли пользователь в компонент свои значения стилей
+    if (theme) {
+        
+    }
 
 </script>
 
@@ -77,19 +101,26 @@
         border-right: none;
         border-top: none;
         display: flex; /* Горизонтальная ориентация для ячеек */
-        flex: 1; /* Ячейки растягиваются на всю ширину строки */
     }
 
     .cell {
         border-top: none;
         border-bottom: none;
         border-left: none;
-        flex: 1; /* Ячейки растягиваются на всю ширину строки */
         border-top: none;
         border-bottom: none;
-        display: flex; /* Используем Flexbox для вертикального выравнивания */
+        flex: 1; /* Ячейки растягиваются на всю ширину строки */
+        display: flex; /* Используем Flexbox для выравнивания содержимого ячеек */
         align-items: center; /* Центрируем содержимое по вертикали */
         justify-content: center; /* Центрируем содержимое по горизонтали */
+    }
+
+    .data-grid:hover {
+        cursor: pointer;
+    }
+
+    .row:hover {
+        background-color: var(--Xl-row-bg);
     }
 
     .row:last-child {

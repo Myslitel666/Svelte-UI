@@ -8,7 +8,7 @@ const themeMode = writable('light');
 // Определение темы оформления пользовательского интерфейса
 const theme = derived(themeMode, ($themeMode): IColorThemeStore => ({
     action: {
-        hover: $themeMode === 'light' ? '#fdfdfd' : '#181818',
+        hover: $themeMode === 'light' ? '#fafafa' : '#202020',
         selected: $themeMode === 'light' ? '#ddd' : '#222',
     },
     border: {
