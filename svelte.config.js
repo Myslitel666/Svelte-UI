@@ -20,7 +20,6 @@ const config = {
 			precompress: false,
 			strict: false
 		}),
-		trailingSlash: 'always'  // Использование конечных слэшей
 	},
 	paths: {
 		base: '/Svelte-UI'  // Устанавливает базовый путь для GitHub Pages
