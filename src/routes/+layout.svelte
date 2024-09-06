@@ -14,6 +14,8 @@
 	import './font.css';
 	import './app.css';
 
+	export const prerender = true;
+
 	let theme: IColorThemeStore;
 
 	// Подписываемся на изменения темы
