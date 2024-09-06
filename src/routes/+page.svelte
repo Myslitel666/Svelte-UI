@@ -7,7 +7,7 @@
 				label = 'Outlined'
 				onfocus={() => {}}
 				onblur={() => {}}
-				oninput={(e: Event) => {
+				oninput={(e) => {
 					let value = extractors.getInputValue(e);
 				}}
 			/>
