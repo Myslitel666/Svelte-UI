@@ -8,18 +8,20 @@ body {
 }
 
 p {
-	margin: 0rem;
-	color: var(--Xl-text-color);
 	font-size: var(--Xl-font-size);
 }
 
+p,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+li,
+ol {
 	margin: 0;
+	color: var(--Xl-text-color);
 }
 
 button {

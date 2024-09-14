@@ -13,8 +13,6 @@
 	//Тестовое данные
 	let value = '';
 	let isChecked = false;
-
-	$: console.log(isChecked);
 </script>
 
 <div id = 'container'>
@@ -79,6 +77,18 @@
 		<div>
 			<ColorThemeSwitch />
 		</div>
+		<p class='heading'>План работы:</p>
+		<ol>
+			<li> Стили для TextField в состоянии disabled;</li>
+			<li> Подключение семейства, размера, цвета шрифта к каждому компоненту через CSS-переменные без использования ColorModeProvider; </li>
+			<li> Удаление заливки label'а TextField; </li>
+			<li> Header и Drawer; </li>
+			<li> Отображение, извлечение и редактирование данных DataGrid, а также - его кастомизация; </li>
+			<li> TextArea; </li>
+			<li> Отображение drop list'а AutoComplete сверху или снизу поля в зависимости от доступной области экрана и при скролинге; </li>
+			<li> Передача конкретных свойств в ColorThemeStore; </li>
+			<li> Стили для активации TextField с помощью состояний, а не селектора input:not(:placeholder-shown);</li>
+		</ol>
 	</div>
 </div>
 
