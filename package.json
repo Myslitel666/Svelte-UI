@@ -31,6 +31,10 @@
 			"types": "./dist/elegant/customization/ColorThemeSwitch.svelte.d.ts",
 			"svelte": "./dist/elegant/customization/ColorThemeSwitch.svelte"
 		},
+		"./AutoComplete": {
+			"types": "./dist/elegant/input/AutoComplete.svelte.d.ts",
+			"svelte": "./dist/elegant/input/AutoComplete.svelte"
+		},
 		"./Button": {
 			"types": "./dist/elegant/input/Button.svelte.d.ts",
 			"svelte": "./dist/elegant/input/Button.svelte"
