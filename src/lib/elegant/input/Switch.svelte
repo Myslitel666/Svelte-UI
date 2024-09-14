@@ -37,10 +37,10 @@
     import { onMount } from "svelte";
     import { generateIdElement } from "../../stores/ElementIdStore.js";
 
-    export let color = '';                                 /* Цвет переключателя */
-    export let id = ''                                     /* Уникальный идентификатор элемента */
-    export let isChecked: boolean = false;                 /* начальное состояние переключателя */
-    export let onClick = () => {};                         /* Обработчик нажатия */
+    export let id = ''                                        /* Уникальный идентификатор элемента */
+    export let color = '';                                    /* Цвет переключателя */
+    export let isChecked = false;                             /* начальное состояние переключателя */
+    export let onClick = () => {};                            /* Обработчик нажатия */
 
     let height = '2rem'; // Высота Switch'а
     let borderRadius = '1rem'; // Радиус скругления углов

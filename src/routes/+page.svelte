@@ -1,4 +1,5 @@
 <script lang='ts'>
+	//Импорт компонентов
 	import Button from "../lib/elegant/input/Button.svelte";
 	import Switch from "../lib/elegant/input/Switch.svelte";
 	import TextField from "../lib/elegant/input/TextField.svelte";;
@@ -6,7 +7,14 @@
 	import ColorThemeSwitch from "../lib/elegant/customization/ColorThemeSwitch.svelte";
 	import AutoComplete from "$lib/elegant/input/AutoComplete.svelte";
 
+	//Импорт утилит
 	import { valueExtractors as extractors } from "../lib/utils/valueExtractors.js";
+
+	//Тестовое данные
+	let value = '';
+	let isChecked = false;
+
+	$: console.log(isChecked);
 </script>
 
 <div id = 'container'>
@@ -15,12 +23,13 @@
 		<p>Text Field</p>
 		<div class="components-container">
 			<TextField 
+				bind:value = {value /*Передача переменной по ссылке*/}
 				variant = 'Outlined'
 				label = 'Outlined'
 				onfocus={() => {}}
 				onblur={() => {}}
 				oninput={(e: Event) => {
-					let value = extractors.getInputValue(e);
+					let value = extractors.getInputValue(e); //Извлечение значения
 				}}
 			/>
 			<TextField 
@@ -60,8 +69,9 @@
 		<p class='heading'>Switch</p>
 		<div>
 			<Switch
+				bind:isChecked = {isChecked /*Передача переменной по ссылке*/}
 				onchange={(e: Event) => {
-					const checked = extractors.getChecked(e);
+					const check = extractors.getChecked(e);
 				}}
 			 />
 		</div>

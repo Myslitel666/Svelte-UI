@@ -7,6 +7,7 @@
     style:--Xl-fill = {fill}
 >
     <input 
+        bind:value={value}
         autocomplete='off'
         id = {id}
         placeholder = ''
@@ -56,8 +57,9 @@
     import { valueExtractors as extractors } from '../../utils/valueExtractors.js';
 
     // Свойства для управления CSS-стилями
-    export let variant: 'Outlined' | 'Filled' | 'Standard' = 'Outlined';
     export let id = ''                                        /* Уникальный идентификатор элемента */
+    export let variant: 'Outlined' | 'Filled' | 'Standard' = 'Outlined';
+    export let value = '';                                    /* Значение поля */
     export let activedborderWidth = '';                       /* Толщина обводки в активном состоянии */
     export let backgroundColor = '';                          /* Цвет заливки */
     export let borderColor = '';                              /* Цвет обводки */
