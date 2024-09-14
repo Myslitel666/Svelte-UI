@@ -1,32 +1,109 @@
 {
-  "private": true,
-  "license": "MIT",
-  "type": "module",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "deploy": "gh-pages -d build -t true"
-  },
-  "devDependencies": {
-    "@fontsource/fira-mono": "^4.5.10",
-    "@neoconfetti/svelte": "^1.0.0",
-    "@sveltejs/adapter-static": "^3.0.2",
-    "@sveltejs/kit": "^2.5.17",
-    "@sveltejs/vite-plugin-svelte": "^3.1.1",
-    "gh-pages": "^6.1.1",
-		"@types/eslint": "^8.56.7",
+	"name": "svelte-elegant",
+	"version": "0.0.53",
+	"scripts": {
+		"clean": "rimraf dist",
+		"dev": "vite dev",
+		"build": "npm run clean && vite build && npm run package",
+		"preview": "vite preview",
+		"package": "npm run clean && svelte-kit sync && svelte-package && publint",
+		"prepublishOnly": "npm run package",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Myslitel666/Svelte-Elegant.git"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		},
+		"./TestComponent": "./dist/TestComponent.svelte",
+		"./ColorThemeProvider": {
+			"types": "./dist/elegant/customization/ColorThemeProvider.svelte.d.ts",
+			"svelte": "./dist/elegant/customization/ColorThemeProvider.svelte"
+		},
+		"./ColorThemeSwitch": {
+			"types": "./dist/elegant/customization/ColorThemeSwitch.svelte.d.ts",
+			"svelte": "./dist/elegant/customization/ColorThemeSwitch.svelte"
+		},
+		"./Button": {
+			"types": "./dist/elegant/input/Button.svelte.d.ts",
+			"svelte": "./dist/elegant/input/Button.svelte"
+		},
+		"./Switch": {
+			"types": "./dist/elegant/input/Switch.svelte.d.ts",
+			"svelte": "./dist/elegant/input/Switch.svelte"
+		},
+		"./TextField": {
+			"types": "./dist/elegant/input/TextField.svelte.d.ts",
+			"svelte": "./dist/elegant/input/TextField.svelte"
+		},
+		"./DataGrid": {
+			"types": "./dist/elegant/data-display/DataGrid.svelte.d.ts",
+			"svelte": "./dist/elegant/data-display/DataGrid.svelte"
+		},
+		"./icons-elegant/Light": {
+			"types": "./dist/icons-elegant/Light.svelte.d.ts",
+			"svelte": "./dist/icons-elegant/Light.svelte"
+		},
+		"./icons-elegant/Dark": {
+			"types": "./dist/icons-elegant/Dark.svelte.d.ts",
+			"svelte": "./dist/icons-elegant/Dark.svelte"
+		},
+		"./icons-elegant/TriangularArrowDown": {
+			"types": "./dist/icons-elegant/TriangularArrowDown.svelte.d.ts",
+			"svelte": "./dist/icons-elegant/TriangularArrowDown.svelte"
+		},
+		"./utils/initialCSSVariables": {
+			"types": "./dist/utils/initialCSSVariables.d.ts",
+			"import": "./dist/utils/initialCSSVariables.js"
+		},
+		"./utils/valueExtractors": {
+			"types": "./dist/utils/valueExtractors.d.ts",
+			"import": "./dist/utils/valueExtractors.js"
+		}
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"peerDependencies": {
+		"svelte": "^5.0.0-next.1"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/package": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+		"@types/eslint": "^9.6.0",
 		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
 		"globals": "^15.0.0",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
+		"publint": "^0.2.0",
+		"rimraf": "^6.0.1",
 		"svelte": "^5.0.0-next.1",
-		"svelte-check": "^3.6.0",
-		"tslib": "^2.4.1",
+		"svelte-check": "^4.0.0",
 		"typescript": "^5.0.0",
-		"typescript-eslint": "^7.5.0",
-		"vite": "^5.0.3",
-		"vitest": "^1.2.0"
-  }
+		"typescript-eslint": "^8.0.0",
+		"vite": "^5.0.11"
+	},
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"dependencies": {
+		"svelte2tsx": "^0.7.18"
+	},
+	"description": "Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).",
+	"main": "eslint.config.js",
+	"author": "",
+	"license": "MIT"
 }

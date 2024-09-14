@@ -1,5 +1,17 @@
+<script lang='ts'>
+	import Button from "../lib/elegant/input/Button.svelte";
+	import Switch from "../lib/elegant/input/Switch.svelte";
+	import TextField from "../lib/elegant/input/TextField.svelte";;
+	import DataGrid from "../lib/elegant/data-display/DataGrid.svelte";
+	import ColorThemeSwitch from "../lib/elegant/customization/ColorThemeSwitch.svelte";
+	import AutoComplete from "$lib/elegant/input/AutoComplete.svelte";
+
+	import { valueExtractors as extractors } from "../lib/utils/valueExtractors.js";
+</script>
+
 <div id = 'container'>
 	<div id = 'page'>
+		<h1>Svelte Elegant</h1>
 		<p>Text Field</p>
 		<div class="components-container">
 			<TextField 
@@ -7,7 +19,7 @@
 				label = 'Outlined'
 				onfocus={() => {}}
 				onblur={() => {}}
-				oninput={(e) => {
+				oninput={(e: Event) => {
 					let value = extractors.getInputValue(e);
 				}}
 			/>
@@ -59,16 +71,6 @@
 		</div>
 	</div>
 </div>
-
-<script lang="ts">
-	import TextField from '../components/inputs/text-fields/TextField.svelte';
-	import Switch from '../components/inputs/switches/Switch.svelte';
-	import ColorThemeSwitch from '../components/inputs/switches/ColorThemeSwitch.svelte';
-	import Button from '../components/inputs/buttons/Button.svelte';
-	import AutoComplete from '../components/inputs/auto-complete/AutoComplete.svelte';
-	import DataGrid from '../components/data-display/data-grid/DataGrid.svelte';
-	import * as extractors from '../utils/valueExtractors';
-</script>
 
 <style>
 	.heading {
