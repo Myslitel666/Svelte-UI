@@ -1,6 +1,6 @@
 {
 	"name": "svelte-elegant",
-	"version": "0.0.54",
+	"version": "0.1.0",
 	"scripts": {
 		"clean": "rimraf dist",
 		"dev": "vite dev",
