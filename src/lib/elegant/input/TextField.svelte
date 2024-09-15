@@ -11,7 +11,7 @@
         bind:value={value}
         autocomplete='off'
         id = {id}
-        placeholder = ''
+        placeholder = 'fictitious'
         type = 'text'
         style:outline = none
         style:border-radius = {borderRadius}
@@ -34,7 +34,6 @@
         on:mouseout={handleMouseOut}
         on:focus={handleFocus}
         on:blur={handleBlur}
-        on:input={handleInput}
     />
     <label 
         for = {id}
@@ -134,12 +133,6 @@
         inputElement.classList.remove('hovered');
     }
 
-    export function handleInput() {
-        const inputElement = extractors.getElementById(id);
-        if (value) inputElement.classList.add('filled');
-        else inputElement.classList.remove('filled');
-    }
-
     export function handleFocus() {
         const inputElement = extractors.getElementById(id);
         inputElement.classList.add('focused');
@@ -202,7 +195,7 @@
         color: var(--Xl-color); /* Изменяем цвет на основной цвет */
     }
 
-    input.focused + label, input.filled + label {
+    input.focused + label, input:not(:placeholder-shown) + label {
         transform: translate(-0.26rem, calc(-1 * var(--Xl-liftingHeight))); /* Сдвигаем метку влево и вверх */
         font-size: 13px; /* Уменьшаем размер шрифта */
         background-color: var(--Xl-background-color);
@@ -210,7 +203,11 @@
         transition: all var(--Xl-effectsTimeCode);
     }
 
-    input.focused, input.filled {
+    input.focused, input:not(:placeholder-shown) {
         background-color: var(--Xl-background-color);
+    }
+
+    input::placeholder {
+        color: var(--Xl-background-color)
     }
 </style>
