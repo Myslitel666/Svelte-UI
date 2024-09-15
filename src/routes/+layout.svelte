@@ -1,5 +1,5 @@
 <script>
-	import ColorThemeProvider from '../lib/elegant/customization/ColorThemeProvider.svelte';
+	import ColorThemeProvider from '../lib/elegant/customization/ThemeProvider.svelte';
 </script>
 
 <ColorThemeProvider>
