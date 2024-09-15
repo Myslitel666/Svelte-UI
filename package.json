@@ -66,6 +66,10 @@
 			"types": "./dist/icons-elegant/TriangularArrowDown.svelte.d.ts",
 			"svelte": "./dist/icons-elegant/TriangularArrowDown.svelte"
 		},
+		"./utils": {
+			"types": "./dist/utils/index.d.ts",
+			"svelte": "./dist/utils/index.js"
+		},
 		"./utils/initialCSSVariables": {
 			"types": "./dist/utils/initialCSSVariables.d.ts",
 			"import": "./dist/utils/initialCSSVariables.js"
