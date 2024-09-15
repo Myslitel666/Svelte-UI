@@ -44,8 +44,11 @@ export interface IColorThemeStore {
     };
     typography: {
         font: string;
+        fontUrl: string;
         fontSize: string;
+        fontStyle: string;
         fontWeight: string;
+        format: string;
         letterSpacing: string;
     };
     effectsTimeCode: string;

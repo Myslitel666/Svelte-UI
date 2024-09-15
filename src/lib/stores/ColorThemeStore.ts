@@ -54,8 +54,11 @@ const theme: Readable<IColorThemeStore> = derived(
     },
     typography: {
       font: 'Century Gothic',
+      fontUrl: './fonts/century-gothic-original/century-gothic.ttf',
       fontSize: '16px',
+      fontStyle: 'normal',
       fontWeight: '100',
+      format: 'truetype',
       letterSpacing: '-0.02rem',
     },
     effectsTimeCode: '0.3s',
