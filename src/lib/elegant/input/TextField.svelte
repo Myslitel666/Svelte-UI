@@ -3,6 +3,7 @@
     tabindex="0"
     class="input-container"
     style:width = {width}
+    style:--Xl-activeborderWidth = {activedborderWidth}
     style:--Xl-background-color = {backgroundColor}
     style:--Xl-fill = {fill}
 >
@@ -25,7 +26,6 @@
         style:--Xl-border-color = {borderColor}
         style:--Xl-color = {primaryColor}
         style:--Xl-height = {height}
-        style:--Xl-activeborderWidth = {activedborderWidth}
         style:--Xl-disabledborderWidth = {disabledborderWidth}
         style:--Xl-hoverBorderColor = {textColor}
         style:--Xl-textColor = {textColor}
@@ -43,7 +43,7 @@
         style:--Xl-color = {primaryColor}
         style:--Xl-font-size = {fontSize}
         style:--Xl-labelColor = {labelColor}
-        style:--Xl-liftingHeight = {variant === 'Outlined' ? `${height}/2` : variant === 'Standard' ? `${height}/2 + 0.65rem` : `${height}/2 + 0.7rem`}
+        style:--Xl-liftingHeight = {variant === 'Outlined' ? `${height}/2 + 0.45*var(--Xl-activeborderWidth)` : variant === 'Standard' ? `${height}/2 + 0.65rem` : `${height}/2 + 0.7rem`}
     >
         {label}
     </label>
@@ -164,6 +164,11 @@
         font-size: var(--Xl-font-size);
         color: var(--Xl-labelColor);
         transition: var(--Xl-effectsTimeCode);
+
+        /* Перекрытие верхней границы поля */
+        height: calc(var(--Xl-activeborderWidth) + 1px);
+        display: flex;
+        align-items: center;
     }
 
     .input-container {

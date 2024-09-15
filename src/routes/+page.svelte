@@ -12,7 +12,7 @@
 
 	//Тестовое данные
 	let value = '';
-	let isChecked = false;
+	let isChecked = true;
 </script>
 
 <div id = 'container'>
@@ -75,11 +75,13 @@
 		</div>
 		<p class='heading'>Color Theme Switch</p>
 		<div>
-			<ColorThemeSwitch />
+			<ColorThemeSwitch bind:isChecked = {isChecked}/>
 		</div>
 		<p class='heading'>План работы:</p>
 		<ol>
-			<li> Подключение семейства, размера, цвета шрифта к каждому компоненту через CSS-переменные без использования ColorModeProvider; </li>
+			<li> Возможность тёмной темы по умолчанию </li>
+			<li> Проверить вставку своего шрифта в Tester'е </li>
+			<li> Разграничить инициализацию CSS-переменных при omMount ThemeProvider и смене темы. При смене темы не нужно повторно загружать все стили для размера шрифтов, интервалов между символами и т. д. </li>
 			<li> Передача конкретных свойств в ColorThemeStore; </li>
 			<li> Стили для TextField и Button в состоянии disabled;</li>
 			<li> Header и Drawer; </li>

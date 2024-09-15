@@ -1,6 +1,5 @@
 <div>
     <Switch 
-        isChecked = {checked}
         onClick = {toggleThemeMode}
         {...$$props}
     >
@@ -14,6 +13,4 @@
     import Switch from "../input/Switch.svelte";
     import ActiveIcon from '../../icons-elegant/Dark.svelte';
     import DisabledIcon from '../../icons-elegant/Light.svelte';
-
-    export let checked: boolean = false;                                    /* начальное состояние переключателя */
 </script>
