@@ -87,7 +87,6 @@
 			<li> Header и Drawer; </li>
 			<li> Отображение, извлечение и редактирование данных DataGrid, а также - его кастомизация; </li>
 			<li> TextArea; </li>
-			<li> Удаление заливки label'а TextField; </li>
 			<li> Отображение drop list'а AutoComplete сверху или снизу поля в зависимости от доступной области экрана и при скролинге; </li>
 			<li> Стили для активации TextField с помощью состояний, а не селектора input:not(:placeholder-shown);</li>
 		</ol>
