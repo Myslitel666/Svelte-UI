@@ -50,6 +50,10 @@
 			"types": "./dist/elegant/data-display/DataGrid.svelte.d.ts",
 			"svelte": "./dist/elegant/data-display/DataGrid.svelte"
 		},
+		"./icons-elegant": {
+			"types": "./dist/icons-elegant/index.d.ts",
+			"svelte": "./dist/icons-elegant/index.js"
+		},
 		"./icons-elegant/Light": {
 			"types": "./dist/icons-elegant/Light.svelte.d.ts",
 			"svelte": "./dist/icons-elegant/Light.svelte"

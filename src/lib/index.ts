@@ -14,11 +14,6 @@ export { default as AutoComplete } from './elegant/input/AutoComplete.svelte';
 /* Data Display Components */
 export { default as DataGrid } from './elegant/data-display/DataGrid.svelte';
 
-/* Icons Components */
-export { default as Light } from './icons-elegant/Light.svelte';
-export { default as Dark } from './icons-elegant/Dark.svelte';
-export { default as TriangularArrowDown } from './icons-elegant/TriangularArrowDown.svelte';
-
 /* Utils */
 export { initialCSSVariables } from './utils/initialCSSVariables.js';
 export { valueExtractors } from './utils/valueExtractors.js';
